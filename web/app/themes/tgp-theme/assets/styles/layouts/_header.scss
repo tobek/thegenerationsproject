@@ -1,0 +1,32 @@
+.nav-primary {
+    display: inline-block;
+    
+    .menu-item {
+        display: inline-block;
+        position: relative;
+
+        .sub-menu {
+            left: -9999px;
+            position: absolute;
+            list-style: none;
+            width: 800px; // @TODO nope shitty
+            top: 30px;
+            padding: 10px 0;
+
+            .menu-item {
+                z-index: 1;
+                margin-left: -5px; // weird, otherwise gap between menu items loses hover and submenu disappears
+                padding-right: 50px;
+            }
+
+            &:hover {
+                left: 40px;
+            }
+        }
+        &:hover {
+            .sub-menu {
+                left: 40px;
+            }
+        }
+    }
+}
