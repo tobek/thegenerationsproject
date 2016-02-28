@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6250bc79f861f3d3353c8a7bb4f91e4a",
-    "content-hash": "8ec6b159bc3790d8fbdfa36e94c746c3",
+    "hash": "6fd9dfc861a094866a9002eee0ad7cdb",
+    "content-hash": "7868d6d74b2c2fa5b9775b7f221155d1",
     "packages": [
         {
             "name": "composer/installers",
@@ -282,6 +282,26 @@
                 "environment"
             ],
             "time": "2015-12-29 15:10:30"
+        },
+        {
+            "name": "wpackagist-plugin/hello-dolly",
+            "version": "1.6",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/hello-dolly/",
+                "reference": "tags/1.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/hello-dolly/"
         }
     ],
     "packages-dev": [],
