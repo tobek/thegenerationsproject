@@ -105,3 +105,28 @@ function assets() {
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+
+// Allow editor role to edit theme options - only need to run this once as it gets saved in the DB
+// $role_object = get_role('editor');
+// $role_object->add_cap('edit_theme_options');
+
+add_action('admin_menu',  __NAMESPACE__ . '\\hide_menus_for_editors');
+function hide_menus_for_editors() {
+    if (is_user_logged_in()) {
+        global $current_user;
+        $user_roles = $current_user->roles;
+        $user_role = array_shift($user_roles);
+
+        if ($user_role === 'editor') {
+            // To allow editor to edit menu we had to allow them to edit theme, but let's remove these other theme-editing menus:
+            remove_submenu_page('themes.php', 'themes.php');
+            remove_submenu_page('themes.php', 'customize.php?return=%2Fwp%2Fwp-admin%2Fnav-menus.php');
+            remove_submenu_page('themes.php', 'widgets.php');
+
+            // While we're at it, de-clutter some more:
+            remove_menu_page('tools.php');
+            remove_menu_page('edit-comments.php');
+        }
+    }
+}
