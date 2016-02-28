@@ -119,10 +119,8 @@ function hide_menus_for_editors() {
         $user_role = array_shift($user_roles);
 
         if ($user_role === 'editor') {
-            // To allow editor to edit menu we had to allow them to edit theme, but let's remove these other theme-editing menus:
+            // To allow editor to edit menu we had to allow them to edit theme, but this one is dangerous so let's remove:
             remove_submenu_page('themes.php', 'themes.php');
-            remove_submenu_page('themes.php', 'customize.php?return=%2Fwp%2Fwp-admin%2Fnav-menus.php');
-            remove_submenu_page('themes.php', 'widgets.php');
 
             // While we're at it, de-clutter some more:
             remove_menu_page('tools.php');
