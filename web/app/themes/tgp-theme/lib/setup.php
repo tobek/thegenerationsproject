@@ -128,3 +128,10 @@ function hide_menus_for_editors() {
         }
     }
 }
+
+add_filter( 'upload_size_limit', __NAMESPACE__ . '\\tgp_increase_upload' );
+function tgp_increase_upload($bytes) {
+    return 16777216; // 16 megabytes
+    // @NOTE also have to set `upload_max_filesize` and `post_max_size` to `16M` and probably good idea to up `max_execution_time` (maybe to 60) but that doesn't seem to be working with ini_set to add to php.ini
+}
+
