@@ -35,3 +35,20 @@
         }
     }
 }
+
+.post-content-wrapper {
+    float: none;
+    margin: auto;
+
+    h3 {
+        @include yellow-box();
+    }
+ 
+    .post-content {
+        @include white-box();
+    }
+
+    .post-content-inner {
+        padding: 30px 30px 50px;
+    }
+}

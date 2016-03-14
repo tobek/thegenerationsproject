@@ -9,9 +9,20 @@
 
     $index = 0;
 
-    if (! $sub_pages_query->have_posts()) {
-        the_content();
-    }
+    if (! $sub_pages_query->have_posts()) { ?>
+        <div class="row">
+            <div class="col-sm-9 col-lg-6 post-content-wrapper">
+                <div class="post-content">
+                    <?php if ($subtitle = get_post_meta($post->ID, 'subtitle', true)) { ?>
+                        <h3><?= $subtitle ?></h3>
+                    <?php } ?>
+                    <div class="post-content-inner">
+                        <?php the_content(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php }
     else { ?>
         <?php while ( $sub_pages_query->have_posts() ) : $sub_pages_query->the_post(); ?>
             <div class="sub-page">
@@ -22,7 +33,7 @@
                 <a class="title" href="<?= get_the_permalink() ?>">
                     <h3><?= get_the_title() ?></h3>
                 </a>
-                
+
                 <div class="excerpt"><?= get_the_excerpt() ?></div>
             </div>
         <?php endwhile; ?>
