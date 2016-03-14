@@ -29,3 +29,63 @@
         }
     }
 }
+
+// Most of the properties from this plugin are applied inline by JS so lots of importants here
+body .sangar-slideshow-container {
+    div.sangar-control-panel {
+        display: none;
+    }
+
+    .sangar-arrow-left,
+    .sangar-arrow-right,
+    .sangar-pagination-bullet {
+        opacity: 1 !important;
+    }
+
+    // .sangar-arrow-left,
+    // .sangar-arrow-right{
+    //     @include white-box(!important);
+    // }
+
+    .sangar-pagination-wrapper.wrapper-bullet {
+        left: 20px !important;
+        bottom: 20px !important;
+        margin-left: 0 !important;
+    }
+
+    .sangar-content-wrapper .sangar-content {
+        .sangar-textbox {
+            padding: 0;
+        }
+
+        // Prevent transition - always show
+        .sangar-textbox-content,
+        .sangar-textbox-title,
+        .sangar-textbox-description {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .sangar-textbox-content {
+            @include white-box(!important);
+            padding: 0 !important;
+
+            .sangar-textbox-title p {
+                @include yellow-box(!important);
+                @include h3(!important);
+                display: inline-block !important;
+                padding: 8px 20px !important;
+            }
+            .sangar-textbox-description {
+                margin: 0;
+                padding: 15px 42px 27px 21px;
+
+                div {
+                    color: #4a4a4a !important;
+                    font-size: 18px !important;
+                    line-height: 1.4 !important;
+                }
+            }
+        }
+    }
+}

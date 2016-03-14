@@ -1,5 +1,9 @@
-@mixin yellow-box() {
-    background-color: $yellow-box-bg;
-    background-image: linear-gradient(to top, $yellow-box-bottom, $yellow-box-top);
-    box-shadow: 0 2px 3px 0 rgba(73, 73, 73, 0.5);
+@mixin yellow-box($important:"") {
+    background: $yellow-box-bg linear-gradient(to top, $yellow-box-bottom, $yellow-box-top) unquote($important);
+    box-shadow: 0 2px 3px 0 rgba(73, 73, 73, 0.5) unquote($important);
+}
+
+@mixin white-box($important:"") {
+    background: $white-box-bg linear-gradient(283deg, $white-box-bottom, $white-box-top) unquote($important);
+    box-shadow: 0 2px 3px 0 rgba(73, 73, 73, 0.5) unquote($important);
 }

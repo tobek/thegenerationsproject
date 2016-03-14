@@ -13,3 +13,10 @@
     text-shadow: none;
     text-transform: none;
 }
+
+@mixin h3($important:"") {
+    font: 500 20px $font-stack-sans unquote($important);
+    color: #4a4a4a unquote($important);
+    text-transform: uppercase unquote($important);
+    text-shadow: 0 1px 1px #ffffff unquote($important);
+}
