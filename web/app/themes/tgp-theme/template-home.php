@@ -17,10 +17,8 @@
     ]);
 ?>
 
-<div class="row">
-    <div class="slideshow col-xs-12">
-        <?= do_shortcode('[sangar-slider id=124]'); ?>
-    </div>
+<div class="slideshow">
+    <?= do_shortcode('[sangar-slider id=124]'); ?>
 </div>
 
 <div class="container">

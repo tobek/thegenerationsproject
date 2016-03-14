@@ -17,3 +17,11 @@
 @import "layouts/pages";
 @import "layouts/posts";
 @import "layouts/tinymce";
+
+.page-parent {
+    .sub-page:nth-child(2n) {
+        .text {
+            float: right;
+        }
+    }
+}
