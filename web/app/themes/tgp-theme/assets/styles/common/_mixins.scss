@@ -1,0 +1,5 @@
+@mixin yellow-box() {
+    background-color: $yellow-box-bg;
+    background-image: linear-gradient(to top, $yellow-box-bottom, $yellow-box-top);
+    box-shadow: 0 2px 3px 0 rgba(73, 73, 73, 0.5);
+}

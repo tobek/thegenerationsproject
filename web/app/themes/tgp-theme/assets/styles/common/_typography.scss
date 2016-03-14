@@ -1,0 +1,7 @@
+@mixin font-nav() {
+    font: 500 14px $font-stack-sans;
+    letter-spacing: 0.9px;
+    text-shadow: 1px 0 1px #ffffff;
+    text-transform: uppercase;
+    color: #4a4a4a;
+}
