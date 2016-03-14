@@ -22,6 +22,8 @@
 @import "layouts/posts";
 @import "layouts/tinymce";
 
+@import "sections/home";
+
 .page-parent {
     .sub-page:nth-child(2n) {
         .text {
@@ -72,7 +74,7 @@ body .sangar-slideshow-container {
 
             .sangar-textbox-title p {
                 @include yellow-box(!important);
-                @include h3(!important);
+                @include font-h3(!important);
                 display: inline-block !important;
                 padding: 8px 20px !important;
             }

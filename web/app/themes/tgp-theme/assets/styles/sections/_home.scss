@@ -1,0 +1,82 @@
+.home {
+    .donate-cta,
+    .news-widget {
+        height: 200px;
+        margin: 50px 0 30px;
+    }
+
+    .donate-cta {
+        @include yellow-box();
+        text-align: center;
+
+        h3 {
+            max-width: 320px;
+            margin: auto;
+            padding: 35px 0 25px;
+            text-transform: none;
+        }
+
+        .btn {
+            width: 140px;
+            height: 45px;
+        }
+    }
+    .news-widget {
+        @include white-box();
+
+        h3 {
+            @include yellow-box();
+            display: inline-block;
+            // margin: 0 0 15px;
+            margin: 0 0 30px; // while the stuff there is real sparse
+            padding: 9px 27px 6px;
+        }
+
+        .post {
+            margin-top: 5px;
+            // font: 14px/1.4 $font-stack-serif;
+            font: 16px/1.4 $font-stack-serif; // while stuff there is real sparse
+
+            a {
+                color: #4a4a4a;
+            }
+
+            .updated {
+                margin-left: 5px;
+                font-size: 10px;
+                font-style: italic;
+                color: rgba(74, 74, 74, 0.71);
+            }
+        }
+    }
+
+    .featured-section {
+        @include white-box();
+        height: 360px;
+
+        h3 {
+            @include yellow-box();
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            width: 75%;
+            margin: 0;
+            padding: 9px 0 6px 12px;
+        }
+
+        .img-holder {
+            height: 0;
+            padding-bottom: 66.67%;
+            overflow: hidden;
+
+            .wp-post-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .excerpt {
+            padding: 30px 20px 40px;
+        }
+    }
+}

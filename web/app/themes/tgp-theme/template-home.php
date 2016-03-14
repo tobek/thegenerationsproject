@@ -23,32 +23,40 @@
 
 <div class="container">
     <div class="row">
-        <div class="donate-cta col-sm-6 col-ms-6">
-            <h4>Help support The Generations Project!</h4>
-            <a href="/donate/" class='btn btn-primary'>Donate</a>
+        <div class="col-sm-6 col-ms-6">
+            <div class="donate-cta">
+                <h3>Help support The Generations Project!</h3>
+                <a href="/donate/"><button class='btn btn-primary'>Donate</button></a>
+            </div>
         </div>
 
-        <div class="news-widget col-sm-6 col-ms-6">
-            <h3>News</h3>
-            <ul>
-                <?php while ($feat_posts_query->have_posts()) : $feat_posts_query->the_post(); ?>
-                    <li>
-                        <a href="<?= get_the_permalink() ?>"><?= get_the_title() ?></a>
-                        <time class="updated" datetime="<?= get_post_time('c', true); ?>"><?= get_the_date(); ?></time>
-                    </li>
-                <?php endwhile; ?>
-            </ul>
+        <div class="col-sm-6 col-ms-6">
+            <div class="news-widget">
+                <h3>News</h3>
+                <ul class="posts">
+                    <?php while ($feat_posts_query->have_posts()) : $feat_posts_query->the_post(); ?>
+                        <li class="post">
+                            <a href="<?= get_the_permalink() ?>"><?= get_the_title() ?></a>
+                            <time class="updated" datetime="<?= get_post_time('c', true); ?>"><?= get_the_date(); ?></time>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="sections row">
+    <div class="featured-sections row">
         <?php while ($feat_pages_query->have_posts()) : $feat_pages_query->the_post(); ?>
-            <div class="section col-md-3 col-sm-6 col-ms-6">
-                <a href="<?= get_the_permalink() ?>">
-                    <h3><?= get_the_title() ?></h3>
-                    <?= get_the_post_thumbnail(null, 'thumbnail') ?>
-                </a>
-                <div><?= get_the_excerpt() ?></div>
+            <div class="col-md-3 col-sm-6 col-ms-6">
+                <div class="featured-section">
+                    <a href="<?= get_the_permalink() ?>">
+                        <h3><?= get_the_title() ?></h3>
+                        <div class="img-holder">
+                            <?= get_the_post_thumbnail(null, 'medium') ?>
+                        </div>
+                    </a>
+                    <div class="excerpt"><?= get_the_excerpt() ?></div>
+                </div>
             </div>
         <?php endwhile; ?>
     </div>
