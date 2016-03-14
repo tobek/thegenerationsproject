@@ -1,0 +1,1 @@
+These are copied from the Contact Form 7 plugin. These files are not actually used programmatically in the site.

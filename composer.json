@@ -29,6 +29,8 @@
     "vlucas/phpdotenv": "^2.0.1",
     "johnpbloch/wordpress": "4.4.2",
     "oscarotero/env": "^1.0",
+    "wpackagist-plugin/akismet": "~3.1.8",
+    "wpackagist-plugin/contact-form-7": "~4.4",
     "wpackagist-plugin/featured-image-column": "~0.2.3",
     "wpackagist-plugin/hello-dolly": "*",
     "wpackagist-plugin/regenerate-thumbnails": "~2.2.6",
