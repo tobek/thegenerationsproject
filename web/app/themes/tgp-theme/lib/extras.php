@@ -19,6 +19,10 @@ function body_class($classes) {
   if (Setup\display_sidebar()) {
     $classes[] = 'sidebar-primary';
   }
+  
+  $classes[] = 'env-'. WP_ENV;
+
+  $classes[] = (is_user_logged_in() ? '' : 'not-') . 'logged-in';
 
   return $classes;
 }

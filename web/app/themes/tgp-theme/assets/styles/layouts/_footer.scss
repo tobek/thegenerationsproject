@@ -1,0 +1,18 @@
+footer {
+    .nav > li > a {
+        display: inline-block;
+        padding: 5px 0;
+
+        &:focus, &:hover {
+            background: none;
+        }
+    }
+
+    .sub-menu {
+        display: none;
+    }
+
+    .info {
+        text-align: right;
+    }
+}

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6fd9dfc861a094866a9002eee0ad7cdb",
-    "content-hash": "7868d6d74b2c2fa5b9775b7f221155d1",
+    "hash": "a0fb70984cb6a25ff2c2af4572401a4a",
+    "content-hash": "9f394f493cbcf5ae463f20eda5fe8277",
     "packages": [
         {
             "name": "composer/installers",
@@ -284,6 +284,26 @@
             "time": "2015-12-29 15:10:30"
         },
         {
+            "name": "wpackagist-plugin/featured-image-column",
+            "version": "0.2.3",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/featured-image-column/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/featured-image-column.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/featured-image-column/"
+        },
+        {
             "name": "wpackagist-plugin/hello-dolly",
             "version": "1.6",
             "source": {
@@ -302,6 +322,46 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/hello-dolly/"
+        },
+        {
+            "name": "wpackagist-plugin/regenerate-thumbnails",
+            "version": "2.2.6",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/regenerate-thumbnails/",
+                "reference": "tags/2.2.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.2.2.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/"
+        },
+        {
+            "name": "wpackagist-plugin/sangar-slider-lite",
+            "version": "1.2",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/sangar-slider-lite/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/sangar-slider-lite.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/sangar-slider-lite/"
         }
     ],
     "packages-dev": [],
