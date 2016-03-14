@@ -4,11 +4,11 @@
     </div>
 
     <div class="container">
-        <h1 class="logo">
-            <a class="brand" href="<?= esc_url(home_url('/')); ?>">
+        <a class="brand" href="<?= esc_url(home_url('/')); ?>">
+            <h1 class="logo">
                 <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo.png" alt="<?php bloginfo('name'); ?>" title="<?php bloginfo('name'); ?>">
-            </a>
-        </h1>
+            </h1>
+        </a>
 
         <nav class="nav-primary">
             <?php
