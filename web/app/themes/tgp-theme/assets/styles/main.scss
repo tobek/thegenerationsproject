@@ -24,14 +24,6 @@
 
 @import "sections/home";
 
-.page-parent {
-    .sub-page:nth-child(2n) {
-        .text {
-            float: right;
-        }
-    }
-}
-
 // Most of the properties from this plugin are applied inline by JS so lots of importants here
 body .sangar-slideshow-container {
     div.sangar-control-panel {
@@ -76,7 +68,7 @@ body .sangar-slideshow-container {
                 @include yellow-box(!important);
                 @include font-h3(!important);
                 display: inline-block !important;
-                padding: 8px 20px !important;
+                padding: 9px 20px 6px !important;
             }
             .sangar-textbox-description {
                 margin: 0;

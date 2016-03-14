@@ -14,6 +14,13 @@
     text-transform: none;
 }
 
+@mixin font-h1($important:"") {
+    font: 500 36px/1.4 $font-stack-sans unquote($important);
+    letter-spacing: 1px;
+    color: #4a4a4a unquote($important);
+    text-transform: uppercase unquote($important);
+    text-shadow: 0 1px 1px #ffffff unquote($important);
+}
 @mixin font-h3($important:"") {
     font: 500 20px $font-stack-sans unquote($important);
     color: #4a4a4a unquote($important);
@@ -21,6 +28,12 @@
     text-shadow: 0 1px 1px #ffffff unquote($important);
 }
 
+h1 {
+    @include font-h1();
+}
 h3 {
     @include font-h3();
+    display: inline-block;
+    margin: 0;
+    padding: 9px 27px 6px;
 }

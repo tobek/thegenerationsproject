@@ -1,0 +1,37 @@
+.page-header {
+    margin-top: 70px;
+}
+
+.page-parent {
+    .sub-page {
+        @include white-box();
+        height: 200px;
+        margin-bottom: 30px;
+
+        .image {
+            float: right;
+            margin: 0 0 0 50px;
+        }
+
+        h3 {
+            @include yellow-box();
+        }
+
+        .excerpt {
+            padding: 20px;
+        }
+
+        &:nth-child(2n) {
+            text-align: right;
+
+            .image {
+                float: left;
+                margin: 0 50px 0 0;
+            }
+
+            .excerpt {
+                text-align: left;
+            }
+        }
+    }
+}
