@@ -33,16 +33,16 @@
     <img class="page-bg-image" src="<?= $feat_img_url ?>">
 <?php } ?>
 
-<div class="row <?= $two_col ? '' : 'col-centered' ?>">
+<div class="row">
     <?php if ($two_col) { ?>
-        <div class="col-ms-9 col-sm-5 post-content-wrapper">
+        <div class="col-ms-9 col-sm-5 col-ms-center post-content-wrapper">
             <div class="post-content">
                 <?php actual_content($content, $subtitle) ?>
             </div>
         </div>
     <?php } ?>
 
-    <div class="<?= $two_col ? 'col-ms-12 col-sm-7' : 'col-sm-9 col-lg-7' ?> post-content-wrapper">
+    <div class="<?= $two_col ? 'col-ms-12 col-sm-7 col-ms-center' : 'col-sm-9 col-lg-7 col-center' ?> post-content-wrapper">
         <div class="post-content">
             <?php if ($form_shortcode) { ?>
                 <div class="post-content-inner">
