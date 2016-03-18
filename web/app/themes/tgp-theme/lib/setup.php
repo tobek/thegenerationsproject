@@ -198,3 +198,71 @@ function tgp_person_sortable_columns() {
 }
 
 
+add_action('admin_init', __NAMESPACE__ . '\\tgp_post_event_date' );
+function tgp_post_event_date() {
+    add_meta_box('tgp_event_date_meta', 'Event Date', __NAMESPACE__ . '\\tgp_event_date_meta', 'post', 'side');
+}
+ 
+function tgp_event_date_meta () {
+  global $post;
+  $date = get_post_meta($post->ID, 'event_date', true);
+   
+  $date_input_value = '';
+  if ($date) {
+    $date_input_value = date('M d, Y', $date);
+    // $time_input_value = date($time_format, $time);
+  }
+   
+  ?>
+    <style>
+      .tgp-event-date ul li { height: 20px; clear:both; margin: 0 0 15px 0;}
+      .tgp-event-date ul li label { width: 100px; display:block; float:left; padding-top:4px; }
+      .tgp-event-date ul li input { width:125px; display:block; float:left; }
+      .tgp-event-date ul li em { width: 200px; display:block; float:left; color:gray; margin-left:10px; padding-top: 4px}
+    </style>
+
+    <div class="tgp-event-date">
+      <input type="hidden" name="tgp-event-date-nonce" id="tgp-event-date-nonce" value="<?= wp_create_nonce('tgp-event-date-nonce') ?>" />
+      <ul>
+          <li><label>Date</label><input name="event_date" class="tgp-date" value="<?= $date_input_value; ?>" /></li>
+          <!-- <li><label>Time</label><input name="event_time" value="<?php // echo $time_input_value; ?>" /><em>Use 24h format (7pm = 19:00)</em></li> -->
+      </ul>
+    </div>
+
+    <script>
+      (function($) {
+        // @TODO/toby this don't work cause our jQuery UI doesn't have it
+        $('.tgp-date').datepicker({
+          dateFormat: 'M d, yy',
+          showOn: 'button',
+          buttonImage: '/yourpath/icon-datepicker.png',
+          buttonImageOnly: true,
+          numberOfMonths: 3
+        });
+      })(jQuery);
+    </script>
+  <?php
+}
+
+add_action ('save_post', __NAMESPACE__ . '\\save_tgp_post_event_date');
+function save_tgp_post_event_date() {
+  global $post;
+   
+  if (! wp_verify_nonce($_POST['tgp-event-date-nonce'], 'tgp-event-date-nonce')) {
+    return $post->ID;
+  }
+   
+  if (! current_user_can('edit_post', $post->ID)) {
+    return $post->ID;
+  }
+   
+  if (isset($_POST['event_date']) && $_POST['event_date']) {
+    // $new_date = strtotime($_POST['event_date'] . $_POST['event_time']);
+    $new_date = strtotime($_POST['event_date']);
+    update_post_meta($post->ID, 'event_date', $new_date);
+  }
+  else {
+    delete_post_meta($post->ID, 'event_date');
+  }
+}
+
