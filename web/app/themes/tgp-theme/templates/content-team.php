@@ -16,9 +16,9 @@
 <div class="container">
     <?php // the_content(); ?>
 
-    <div class="row">
+    <div class="row row-eq-height">
         <?php while ($team_query->have_posts()) : $team_query->the_post(); ?>
-            <div class="col-sm-4 col-ms-8 col-xs-10">
+            <div class="col-xs-center col-sm-4 col-ms-6 col-xs-10">
                 <div class="card">
                     <div class="image-wrapper">
                         <?= get_the_post_thumbnail(null, 'original', ['alt' => get_the_title()]) ?>
@@ -36,9 +36,9 @@
     <div class="board">
         <h1>Board of Directors</h1>
 
-        <div class="row">
+        <div class="row row-eq-height">
             <?php while ($board_query->have_posts()) : $board_query->the_post(); ?>
-                <div class="col-sm-3 col-xs-6">
+                <div class="col-xs-center col-sm-3 col-ms-6 col-xs-8">
                     <div class="card">
                         <h3><?php the_title() ?></h3>
                         <div class="text"><?php the_content() ?></div>

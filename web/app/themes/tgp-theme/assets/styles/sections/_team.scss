@@ -1,8 +1,8 @@
 .team {
     .card {
         @include white-box();
-        min-height: 530px;
         margin-bottom: 40px;
+        flex: 1;
 
         h3 {
             @include yellow-box();

@@ -1,13 +1,37 @@
-// Grid system
-.main {
-  // @include make-sm-column($main-sm-columns);
-  // .sidebar-primary & {
-  //   @include make-sm-column($main-sm-columns - $sidebar-sm-columns);
-  // }
+.container {
+  padding-right: 20px;
+  padding-left: 20px;
 }
-// .sidebar {
-//   @include make-sm-column($sidebar-sm-columns);
-// }
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+
+  & > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+@media (max-width: $screen-xs-min) {
+  .col-xs-center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (max-width: $screen-xs-max) {
+  .col-ms-center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 
 // Bootstrap Mid-Small - col-ms-* - the missing grid set for Bootstrap3.
 // via https://gist.github.com/andyl/6360906
@@ -105,3 +129,4 @@
   .col-ms-offset-10 { margin-left: percentage((10/ $grid-columns)); }
   .col-ms-offset-11 { margin-left: percentage((11/ $grid-columns)); }
 }
+
