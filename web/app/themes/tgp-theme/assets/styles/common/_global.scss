@@ -2,6 +2,15 @@ body {
     font: 16px/20px $font-stack-serif;
     background: #EEE url('../images/bg-main.jpg') center repeat;
 }
+.content {
+    position: relative;
+    padding-bottom: 75px;
+    overflow: hidden;
+}
+.page-header {
+    margin: 70px auto 5px;
+    border: 0;
+}
 h1, h2, h3, h4, h5, h6 {
     font-family: $font-stack-sans;
 }

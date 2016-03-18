@@ -1,4 +1,11 @@
 <?php
+    $feat_img_url = null;
+    $feat_img_id = get_post_thumbnail_id();
+    if ($feat_img_id) {
+        $feat_img_url_array = wp_get_attachment_image_src($feat_img_id, 'large', true);
+        $feat_img_url = $feat_img_url_array[0];
+    }
+
     $content = get_the_content();
 
     preg_match('/\[contact-form-7 [^\]]*\]/', $content, $matches);
@@ -21,6 +28,11 @@
     <?php }
 
 ?>
+
+<?php if ($feat_img_url) { ?>
+    <img class="page-bg-image" src="<?= $feat_img_url ?>">
+<?php } ?>
+
 <div class="row <?= $two_col ? '' : 'col-centered' ?>">
     <?php if ($two_col) { ?>
         <div class="col-ms-9 col-sm-5 post-content-wrapper">

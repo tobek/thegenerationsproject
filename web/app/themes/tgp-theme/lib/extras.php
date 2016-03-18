@@ -15,6 +15,10 @@ function body_class($classes) {
     }
   }
 
+  if (is_page() && get_post_thumbnail_id()) {
+    $classes[] = 'has-feat-img';
+  }
+
   // Add class if sidebar is active
   if (Setup\display_sidebar()) {
     $classes[] = 'sidebar-primary';
