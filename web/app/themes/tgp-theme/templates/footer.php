@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="links col-ms-6 col-sm-6">
-                <a href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+                <a href="<?= esc_url(home_url('/')); ?>">HOME</a>
                 <?php
                 if (has_nav_menu('primary_navigation')) :
                 wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']);
