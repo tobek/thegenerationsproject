@@ -166,6 +166,7 @@ function create_people() {
       'editor',
       'thumbnail',
       'custom-fields',
+      'page-attributes',
     ],
     'taxonomies' => ['tgp_role']
   ]);
