@@ -18,7 +18,9 @@
 ?>
 
 <div class="slideshow">
-    <?= do_shortcode('[sangar-slider id=124]'); ?>
+    <?php while (have_posts()) : the_post(); ?>
+        <?= the_content(); ?>
+    <?php endwhile; ?>
 </div>
 
 <div class="container">
