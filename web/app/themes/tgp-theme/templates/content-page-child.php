@@ -1,10 +1,7 @@
 <?php
-    $feat_img_url = null;
-    $feat_img_id = get_post_thumbnail_id();
-    if ($feat_img_id) {
-        $feat_img_url_array = wp_get_attachment_image_src($feat_img_id, 'large', true);
-        $feat_img_url = $feat_img_url_array[0];
-    }
+    use TGP\Utils;
+    
+    $feat_img_url = Utils\get_feat_img('large');
 
     $content = get_the_content();
 
