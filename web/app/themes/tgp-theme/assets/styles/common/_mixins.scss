@@ -3,6 +3,11 @@
     box-shadow: 0 2px 3px 0 rgba(73, 73, 73, 0.5) unquote($important);
 }
 
+@mixin yellow-box-white-bg($important:"") {
+    background: white linear-gradient(to top, $yellow-box-bottom, $yellow-box-bg) unquote($important);
+    box-shadow: 0 2px 3px 0 rgba(73, 73, 73, 0.5) unquote($important);
+}
+
 @mixin white-box($important:"") {
     background: $white-box-bg linear-gradient(283deg, $white-box-bottom, $white-box-top) unquote($important);
     box-shadow: 0 2px 3px 0 rgba(73, 73, 73, 0.5) unquote($important);

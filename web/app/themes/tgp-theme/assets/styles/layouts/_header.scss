@@ -4,7 +4,7 @@
     background-color: $gray-bg-dark;
 
     .logo {
-        @include yellow-box();
+        @include yellow-box-white-bg();
         z-index: 1000;
         position: absolute;
         top: 0;
