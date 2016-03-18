@@ -21,7 +21,7 @@
             <div class="col-xs-center col-sm-4 col-ms-6 col-xs-10">
                 <div class="card">
                     <div class="image-wrapper">
-                        <?= get_the_post_thumbnail(null, 'original', ['alt' => get_the_title()]) ?>
+                        <?= get_the_post_thumbnail(null, 'medium', ['alt' => get_the_title()]) ?>
                         <h3 class="name"><?php the_title() ?></h3>
                     </div>
 
