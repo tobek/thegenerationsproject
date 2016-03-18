@@ -3,6 +3,7 @@
 namespace Roots\Sage\Setup;
 
 use Roots\Sage\Assets;
+use TGP\Utils;
 
 /**
  * Theme setup
@@ -134,4 +135,65 @@ function tgp_increase_upload($bytes) {
     return 16777216; // 16 megabytes
     // @NOTE also have to set `upload_max_filesize` and `post_max_size` to `16M` and probably good idea to up `max_execution_time` (maybe to 60) but that doesn't seem to be working with ini_set to add to php.ini
 }
+
+add_action('init', __NAMESPACE__ . '\\create_people');
+function create_people() {
+  register_taxonomy('tgp_role', 'tgp_person', [
+    'labels' => [
+      'name' => 'Roles',
+      'singular_name' => 'Role'
+    ],
+    'public' => true
+  ]);
+
+  register_post_type('tgp_person', [
+    'labels' => [
+      'name' => 'People',
+      'singular_name' => 'Person',
+      'add_new_item' => 'Add New Person',
+      'new_item' => 'Add Person',
+      'edit_item' => 'Edit Person',
+      'view_item' => 'View Person',
+      'all_items' => 'All People',
+    ],
+    'public' => true,
+    'has_archive' => true,
+    'rewrite' => array('slug' => 'people'),
+    'menu_position' => 21,
+    'menu_icon' => 'dashicons-universal-access',
+    'supports' => [
+      'title',
+      'editor',
+      'thumbnail',
+      'custom-fields',
+    ],
+    'taxonomies' => ['tgp_role']
+  ]);
+}
+
+add_filter('manage_tgp_person_posts_columns', __NAMESPACE__ . '\\change_tgp_person_columns');
+function change_tgp_person_columns($cols)  {
+  $cols['role'] = 'Role';
+  return $cols;
+}
+
+add_action('manage_posts_custom_column', __NAMESPACE__ . '\\tgp_person_custom_columns', 10, 2 );
+function tgp_person_custom_columns($column, $post_id) {
+  if ($column === 'role') {
+    $terms = get_the_terms($post_id, 'tgp_role');
+    if (isset($terms[0])) {
+      echo $terms[0]->slug;
+    }
+  }
+}
+
+add_filter('manage_edit-tgp_person_sortable_columns', __NAMESPACE__ . '\\tgp_person_sortable_columns');
+function tgp_person_sortable_columns() {
+  return array(
+    'title' => 'title',
+    'date' => 'date',
+    'role' => 'role',
+  );
+}
+
 
