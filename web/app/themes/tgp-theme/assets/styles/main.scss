@@ -84,3 +84,42 @@ body .sangar-slideshow-container {
         }
     }
 }
+
+
+#slideshow-wrapper1 {
+    #information1.slideshow-information {
+        @include white-box();
+        opacity: 0.9 !important;
+
+        .slideshow-info-heading {
+            @include yellow-box();
+            @include font-h3();
+            font-size: 16px;
+            display: inline-block;
+            padding: 7px 12px 4px;
+
+            &:empty {
+                display: none;
+            }
+        }
+
+        .slideshow-info-content {
+            color: #4a4a4a;
+            font-size: 14px;
+            padding: 10px 12px;
+
+            a {
+                color: black;
+                text-decoration: underline;
+
+                &:hover {
+                    color: #666
+                }
+            }
+
+            &:empty {
+                padding: 5px 0;
+            }
+        }
+    }
+}

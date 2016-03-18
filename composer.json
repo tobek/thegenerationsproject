@@ -34,7 +34,8 @@
     "wpackagist-plugin/featured-image-column": "~0.2.3",
     "wpackagist-plugin/hello-dolly": "*",
     "wpackagist-plugin/regenerate-thumbnails": "~2.2.6",
-    "wpackagist-plugin/sangar-slider-lite": "~1.2"
+    "wpackagist-plugin/sangar-slider-lite": "~1.2",
+    "wpackagist-plugin/slideshow-gallery": "~1.6.3"
   },
   "extra": {
     "installer-paths": {

@@ -19,3 +19,16 @@ function get_feat_img($size) {
         return null;
     }
 }
+
+function extract_preg($pattern, $subject, &$result) {
+    preg_match($pattern, $subject, $matches);
+
+    if (isset($matches) && isset($matches[0])) {
+        $result = $matches[0];
+        return trim(str_replace($result, '', $subject));
+    }
+    else {
+        $result = null;
+        return $subject;
+    }
+}

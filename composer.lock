@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "434fc3b99957c2399afb6e6ae2ff7bdb",
-    "content-hash": "2560fad67439311068d876451a88fde4",
+    "hash": "54ea39fe74b5c8e8578c6dabaac4ab95",
+    "content-hash": "1b2c4e239e1abfc573e31ec0dd1b25d8",
     "packages": [
         {
             "name": "composer/installers",
@@ -288,7 +288,7 @@
             "version": "3.1.8",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/akismet/",
+                "url": "https://plugins.svn.wordpress.org/akismet/",
                 "reference": "tags/3.1.8"
             },
             "dist": {
@@ -308,7 +308,7 @@
             "version": "4.4",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/contact-form-7/",
+                "url": "https://plugins.svn.wordpress.org/contact-form-7/",
                 "reference": "tags/4.4"
             },
             "dist": {
@@ -328,7 +328,7 @@
             "version": "0.2.3",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/featured-image-column/",
+                "url": "https://plugins.svn.wordpress.org/featured-image-column/",
                 "reference": "trunk"
             },
             "dist": {
@@ -348,7 +348,7 @@
             "version": "1.6",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/hello-dolly/",
+                "url": "https://plugins.svn.wordpress.org/hello-dolly/",
                 "reference": "tags/1.6"
             },
             "dist": {
@@ -368,7 +368,7 @@
             "version": "2.2.6",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/regenerate-thumbnails/",
+                "url": "https://plugins.svn.wordpress.org/regenerate-thumbnails/",
                 "reference": "tags/2.2.6"
             },
             "dist": {
@@ -388,7 +388,7 @@
             "version": "1.2",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/sangar-slider-lite/",
+                "url": "https://plugins.svn.wordpress.org/sangar-slider-lite/",
                 "reference": "trunk"
             },
             "dist": {
@@ -402,6 +402,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/sangar-slider-lite/"
+        },
+        {
+            "name": "wpackagist-plugin/slideshow-gallery",
+            "version": "1.6.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/slideshow-gallery/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/slideshow-gallery.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/slideshow-gallery/"
         }
     ],
     "packages-dev": [],

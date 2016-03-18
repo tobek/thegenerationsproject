@@ -1,15 +1,10 @@
 <?php
     use TGP\Utils;
-    
+
     $feat_img_url = Utils\get_feat_img('large');
 
-    $content = get_the_content();
-
-    preg_match('/\[contact-form-7 [^\]]*\]/', $content, $matches);
-    if (isset($matches) && isset($matches[0])) {
-        $form_shortcode = $matches[0];
-        $content = trim(str_replace($form_shortcode, '', $content));
-    }
+    $form_shortcode = null;
+    $content = Utils\extract_preg('/\[contact-form-7 [^\]]*\]/', get_the_content(), $form_shortcode);
 
     $two_col = $content && $form_shortcode;
 
