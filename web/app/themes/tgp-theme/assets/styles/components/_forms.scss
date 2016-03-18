@@ -13,3 +13,103 @@
   @extend .btn;
   @extend .btn-default;
 }
+
+// Contact Form 7 plugin forms
+.wpcf7 form {
+    color: #4a4a4a;
+
+    label {
+        font-family: $font-stack-sans;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    p > label {
+        width: 100%;
+    }
+
+    .wpcf7-form-control-wrap {
+        display: block;
+        margin-top: 8px;
+
+        input[type=text], input[type=email], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bab5bb;
+            box-shadow: inset 0 1px 3px 0 rgba(10, 10, 10, 0.09);
+            font-family: $font-stack-serif;
+            letter-spacing: 0.3px;
+
+            &:focus {
+                border-color: rgba(255, 217, 34, 0.8);
+                outline: none;
+            }
+        }
+
+        span[role=alert] {
+            margin-top: 5px;
+            text-transform: none;
+        }
+    }
+
+    .checkboxes {
+        margin: 25px 10px 30px 5px;
+
+        .wpcf7-form-control-wrap {
+            margin: 0;
+        }
+
+        label {
+            cursor: pointer;
+            width: 100%;
+            margin: 0;
+            font-family: $font-stack-serif;
+            font-weight: normal;
+            color: #6c6c6c;
+            text-transform: none;
+        }
+
+        input[type=checkbox] {
+            float: right;
+        }
+    }
+
+    .textarea-wrap {
+        font-family: $font-stack-sans;
+        font-weight: 500;
+
+        textarea {
+            max-height: 150px;
+        }
+    }
+
+    .submit-wrap {
+        margin-top: 20px;
+        text-align: center;
+
+        input[type=submit] {
+            @extend .btn;
+            @extend .btn-primary;
+            padding: 12px 35px 10px;
+            font-size: 20px;
+        }
+    }
+
+    .wpcf7-response-output {
+        @extend .alert;
+        border-width: 1px;
+
+        &.wpcf7-mail-sent-ok {
+            @extend .alert-success;
+        }
+        &.wpcf7-mail-sent-ng {
+            @extend .alert-danger;
+        }
+        &.wpcf7-spam-blocked {
+            @extend .alert-warning;
+        }
+        &.wpcf7-validation-errors {
+            @extend .alert-info;
+        }
+    }
+}

@@ -9,20 +9,9 @@
 
     $index = 0;
 
-    if (! $sub_pages_query->have_posts()) { ?>
-        <div class="row">
-            <div class="col-sm-9 col-lg-6 post-content-wrapper">
-                <div class="post-content">
-                    <?php if ($subtitle = get_post_meta($post->ID, 'subtitle', true)) { ?>
-                        <h3><?= $subtitle ?></h3>
-                    <?php } ?>
-                    <div class="post-content-inner">
-                        <?php the_content(); ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php }
+    if (! $sub_pages_query->have_posts()) {
+        get_template_part('templates/content-page-child');
+    }
     else { ?>
         <?php while ( $sub_pages_query->have_posts() ) : $sub_pages_query->the_post(); ?>
             <div class="sub-page">

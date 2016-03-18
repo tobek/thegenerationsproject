@@ -37,8 +37,17 @@
 }
 
 .post-content-wrapper {
-    float: none;
-    margin: auto;
+    margin-bottom: 25px;
+
+    .col-centered & {
+        float: none;
+        margin: auto;
+    }
+    @media (max-width: $screen-sm ) {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     h3 {
         @include yellow-box();

@@ -26,7 +26,7 @@
         <div class="col-sm-6 col-ms-6">
             <div class="donate-cta">
                 <h3>Help support The Generations Project!</h3>
-                <a href="/donate/"><button class='btn btn-primary'>Donate</button></a>
+                <a href="/donate/"><button class='btn btn-default'>Donate</button></a>
             </div>
         </div>
 
