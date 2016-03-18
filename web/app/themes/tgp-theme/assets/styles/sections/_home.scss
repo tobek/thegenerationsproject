@@ -52,6 +52,7 @@
     .featured-section {
         @include white-box();
         height: 360px;
+        margin-bottom: 20px;
 
         h3 {
             @include yellow-box();
