@@ -309,3 +309,26 @@ function admin_css() { ?>
   </style>
 <?php }
 
+// Ensure that except and custom fields meta boxes always visible
+add_action('admin_init', __NAMESPACE__ . '\\unhide_meta_boxes');
+function unhide_meta_boxes() {
+  $dirty = false;
+  $page_hidden = get_usermeta(get_current_user_id(), 'metaboxhidden_page');
+
+  $index = array_search('postexcerpt', $page_hidden);
+  if ($index !== false) {
+    unset($page_hidden[$index]);
+    $dirty = true;
+  }
+
+  $index = array_search('postcustom', $page_hidden);
+  if ($index !== false) {
+    unset($page_hidden[$index]);
+    $dirty = true;
+  }
+
+  if ($dirty) {
+    $page_hidden = array_values($page_hidden);
+    update_user_meta(get_current_user_id(), 'metaboxhidden_page', $page_hidden);
+  }
+}
