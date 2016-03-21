@@ -45,7 +45,8 @@
 
         // Add margin to events so it's scrollable within container
         var lastEventHeight = $('.js-events-container .js-post:last-child').height();
-        $('.js-events').css('margin-bottom', height - lastEventHeight);
+        $('.js-events').css('margin-bottom', height - lastEventHeight - 30);
+
 
         $('.js-timeline-node').on('mouseenter', function(event) {
           event.preventDefault();
