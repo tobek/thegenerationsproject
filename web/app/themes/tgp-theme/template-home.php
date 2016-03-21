@@ -14,6 +14,7 @@
 
     $feat_posts_query = new WP_Query([
         'post_type' => 'post',
+        'posts_per_page' => 3,
     ]);
 ?>
 

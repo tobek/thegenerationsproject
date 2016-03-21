@@ -25,10 +25,12 @@
     .news-widget {
         @include white-box();
 
+        overflow-y: auto;
+
         h3 {
             @include yellow-box();
             // margin: 0 0 15px;
-            margin: 0 0 30px; // while the stuff there is real sparse
+            margin: 0 0 20px; // while the stuff there is real sparse
         }
 
         .post {
