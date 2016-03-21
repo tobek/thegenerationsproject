@@ -243,13 +243,13 @@ function tgp_event_date_meta () {
    
   ?>
     <style>
-      .tgp-event-date ul li { height: 20px; clear:both; margin: 0 0 15px 0;}
-      .tgp-event-date ul li label { width: 100px; display:block; float:left; padding-top:4px; }
-      .tgp-event-date ul li input { width:125px; display:block; float:left; }
-      .tgp-event-date ul li em { width: 200px; display:block; float:left; color:gray; margin-left:10px; padding-top: 4px}
+      .tgp-event-date > ul > li { height: 20px; clear:both; margin: 0 0 15px 0;}
+      .tgp-event-date > ul > li label { width: 100px; display:block; float:left; padding-top:4px; }
+      .tgp-event-date > ul > li input { width:125px; display:block; float:left; }
+      .tgp-event-date > ul > li em { width: 200px; display:block; float:left; color:gray; margin-left:10px; padding-top: 4px}
     </style>
 
-    <div class="tgp-event-date">
+    <div class="tgp-event-date bootstrap-iso">
       <input type="hidden" name="tgp-event-date-nonce" id="tgp-event-date-nonce" value="<?= wp_create_nonce('tgp-event-date-nonce') ?>" />
       <ul>
           <li><label>Date</label><input name="event_date" class="tgp-date" value="<?= $date_input_value; ?>" /></li>
@@ -259,13 +259,8 @@ function tgp_event_date_meta () {
 
     <script>
       (function($) {
-        // @TODO/toby this don't work cause our jQuery UI doesn't have it
-        $('.tgp-date').datepicker({
-          dateFormat: 'M d, yy',
-          showOn: 'button',
-          buttonImage: '/yourpath/icon-datepicker.png',
-          buttonImageOnly: true,
-          numberOfMonths: 3
+        $('.tgp-date').datetimepicker({
+          format: 'MMM D, YYYY'
         });
       })(jQuery);
     </script>
@@ -292,6 +287,21 @@ function save_tgp_post_event_date() {
   else {
     delete_post_meta($post->ID, 'event_date');
   }
+}
+
+add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\include_datetimepicker');
+function include_datetimepicker($hook) {
+  if ($hook !== 'post.php' && $hook !== 'post-new.php') {
+    return;
+  }
+
+  wp_register_style('bootstrap_css', get_template_directory_uri() . '/assets/styles/bootstrap-iso.css', null, '3.1.0');
+  wp_enqueue_style('bootstrap_css');
+  wp_register_style('eonasdan-bootstrap-datetimepicker_css', get_template_directory_uri() . '/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css', null, '4.17.37');
+  wp_enqueue_style('eonasdan-bootstrap-datetimepicker_css');
+
+  wp_enqueue_script('moment_js', get_template_directory_uri() . '/bower_components/moment/min/moment.min.js', null, '2.12.0', false);
+  wp_enqueue_script('eonasdan-bootstrap-datetimepicker_js', get_template_directory_uri() . '/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js', ['jquery'], '4.17.37', false);
 }
 
 
