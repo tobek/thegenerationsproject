@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-header .timeline {
     position: relative;
     width: calc(100% + 60px);
-    margin: 0 0 25px -30px;
+    margin: 10px 0 25px -30px;
     white-space: nowrap;
     font-family: $font-stack-sans;
     font-weight: 500;
@@ -53,16 +53,15 @@ h1, h2, h3, h4, h5, h6 {
                 @include yellow-box();
                 border-radius: 50%;
                 color: #212121;
-
-                &:hover {
-                }
+                transition: box-shadow 250ms;
             }
 
+            &.is-current-event,
             &:hover {
                 cursor: pointer;
 
                 .letter {
-                    box-shadow: 0 0px 2px 2px rgba(255,224,50,.8);
+                    box-shadow: 0 0 1px 4px rgba(255, 224, 50, .6);
                 }
             }
         }

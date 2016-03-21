@@ -5,26 +5,7 @@
 
     use TGP\Utils;
 
-    $events = get_posts([
-        'post_status' => 'publish',
-        'post_type' => 'post',
-        'meta_key' => 'event_date',
-        'orderby' => 'meta_value_num',
-        'order' => 'ASC',
-    ]);
-
-    // Utils\dump($events);
-
-    $months_with_events = [];
-    foreach ($events as $event) {
-        $timestamp = get_post_meta($event->ID, 'event_date', true);
-
-        $year_month = date('Y-m', $timestamp);
-        if (! isset($months_with_events[$year_month])) {
-            $months_with_events[$year_month] = [];
-        }
-        $months_with_events[$year_month][] = $event;
-    }
+    list($events, $months_with_events) = Utils\get_months_with_events();
 
     // Need to fake The Loop. We need to call get_posts so that we can calculate and pass $months_with_events to timeline generation, so no need to duplicate work and also call WP_Query. But get_the_excerpt requires The Loop so we'll fake it as we loop through $events.
     global $post, $pages, $page;

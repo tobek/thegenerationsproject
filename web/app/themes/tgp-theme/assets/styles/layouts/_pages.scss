@@ -112,7 +112,7 @@
         position: relative;
 
         .tgp-post {
-            transition: opacity 300ms;
+            transition: opacity 300ms, box-shadow 300ms;
         }
 
         &.is-scrolled {
@@ -121,6 +121,7 @@
 
                 &.is-active {
                     opacity: 1;
+                    box-shadow: 0 2px 3px 0 rgba(74, 73, 74, 0.5), 0 2px 4px 0 #ffee49;
                 }
             }
         }
