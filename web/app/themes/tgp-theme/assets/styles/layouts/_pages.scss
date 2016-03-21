@@ -12,6 +12,11 @@
         color: white;
         text-shadow: 2px 2px 2px #4a4a4a;
     }
+
+    .page-header.partners h1 {
+        color: #4a4a4a;
+        text-shadow: 0 1px 1px #ffffff;
+    }
 }
 
 .page-parent {
@@ -65,5 +70,19 @@
 
     .post-content-inner {
         padding: 30px 30px 50px;
+    }
+}
+
+.about {
+    .partner-image {
+        display: inline-block;
+        margin: 0 25px 25px 0;
+
+        img {
+            width: auto;
+            height: auto;
+            max-width: 300px;
+            max-height: 150px;
+        }
     }
 }

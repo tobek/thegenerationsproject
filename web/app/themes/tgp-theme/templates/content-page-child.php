@@ -46,3 +46,32 @@
         </div>
     </div>
 </div>
+
+<?php
+if (is_page('about')) {
+    $partners_query = new WP_Query([
+        'post_type' => 'tgp_partner',
+        'orderby' => 'menu_order',
+        'order' => 'ASC',
+    ]);
+
+    ?>
+        <div class="page-header partners">
+            <h1>Partners</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-9 col-lg-7 col-center post-content-wrapper">
+                <div class="post-content">
+                    <div class="post-content-inner">
+                        <?php while ($partners_query->have_posts()) : $partners_query->the_post(); ?>
+                            <a class="partner-image" href="<?= get_the_title() ?>" target="_blank">
+                                <img src="<?= Utils\get_feat_img('thumbnail') ?>">
+                            </a>
+                        <?php endwhile; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+} ?>

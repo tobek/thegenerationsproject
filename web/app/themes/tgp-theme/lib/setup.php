@@ -200,6 +200,32 @@ function tgp_person_sortable_columns() {
 }
 
 
+add_action('init', __NAMESPACE__ . '\\create_partners');
+function create_partners() {
+  register_post_type('tgp_partner', [
+    'labels' => [
+      'name' => 'Partners',
+      'singular_name' => 'Partner',
+      'add_new_item' => 'Add New Partner',
+      'new_item' => 'Add Partner',
+      'edit_item' => 'Edit Partner',
+      'view_item' => 'View Partner',
+      'all_items' => 'All Partners',
+    ],
+    'public' => true,
+    'has_archive' => false,
+    'rewrite' => array('slug' => 'partners'),
+    'menu_position' => 22,
+    'menu_icon' => 'dashicons-awards',
+    'supports' => [
+      'title',
+      'thumbnail',
+      'page-attributes',
+    ],
+  ]);
+}
+
+
 add_action('admin_init', __NAMESPACE__ . '\\tgp_post_event_date' );
 function tgp_post_event_date() {
     add_meta_box('tgp_event_date_meta', 'Event Date', __NAMESPACE__ . '\\tgp_event_date_meta', 'post', 'side');
@@ -267,4 +293,19 @@ function save_tgp_post_event_date() {
     delete_post_meta($post->ID, 'event_date');
   }
 }
+
+
+add_action('admin_head', __NAMESPACE__ . '\\admin_css');
+function admin_css() { ?>
+  <style>
+    .post-php.post-type-tgp_partner h1:after,
+    .post-new-php.post-type-tgp_partner h1:after {
+      content: '(enter partner link as the title)';
+      display: block;
+      margin-top: 5px;
+      font-size: 80%;
+      font-style: italic;
+    }
+  </style>
+<?php }
 
