@@ -130,6 +130,8 @@ function hide_menus_for_editors() {
     }
 }
 
+add_post_type_support('page', 'excerpt');
+
 add_filter( 'upload_size_limit', __NAMESPACE__ . '\\tgp_increase_upload' );
 function tgp_increase_upload($bytes) {
     return 16777216; // 16 megabytes
