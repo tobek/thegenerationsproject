@@ -23,36 +23,56 @@
     .page-header h1 {
         text-transform: uppercase;
     }
+}
 
-    .sub-page {
-        @include white-box();
-        height: 200px;
-        margin-bottom: 30px;
+.alternating-rows {
+    @include white-box();
+    height: 200px;
+    margin-bottom: 30px;
 
-        .image {
-            float: right;
-            margin: 0 0 0 50px;
-        }
+    .image {
+        float: right;
+        margin: 0 0 0 50px;
+    }
+
+    header {
+        @include yellow-box();
+        display: inline-block;
+        padding-top: 2px;
 
         h3 {
-            @include yellow-box();
+            padding-right: 10px;
+        }
+    }
+
+    time {
+        display: inline-block;
+        position: relative;
+        bottom: -10px;
+        margin: 0 7px 12px 0;
+
+        color: #4a4a4a;
+        font-size: 14px;
+        font-family: $font-stack-sans;
+        font-style: italic;
+        font-weight: 500;
+        letter-spacing: 0.9px;
+    }
+
+    .excerpt {
+        padding: 20px;
+    }
+
+    &:nth-child(2n) {
+        text-align: right;
+
+        .image {
+            float: left;
+            margin: 0 50px 0 0;
         }
 
         .excerpt {
-            padding: 20px;
-        }
-
-        &:nth-child(2n) {
-            text-align: right;
-
-            .image {
-                float: left;
-                margin: 0 50px 0 0;
-            }
-
-            .excerpt {
-                text-align: left;
-            }
+            text-align: left;
         }
     }
 }

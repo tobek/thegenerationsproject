@@ -14,17 +14,7 @@
     }
     else { ?>
         <?php while ( $sub_pages_query->have_posts() ) : $sub_pages_query->the_post(); ?>
-            <div class="sub-page">
-                <a class="image" href="<?= get_the_permalink() ?>">
-                    <?= get_the_post_thumbnail(null, 'thumbnail') ?>
-                </a>
-
-                <a class="title" href="<?= get_the_permalink() ?>">
-                    <h3><?= get_the_title() ?></h3>
-                </a>
-
-                <div class="excerpt"><?= get_the_excerpt() ?></div>
-            </div>
+            <?php get_template_part('templates/content', 'alternating-rows'); ?>
         <?php endwhile; ?>
     <?php }
 
