@@ -341,4 +341,13 @@ function unhide_meta_boxes() {
     $page_hidden = array_values($page_hidden);
     update_user_meta(get_current_user_id(), 'metaboxhidden_page', $page_hidden);
   }
+
+  // For posts we just care about the excerpt field
+  $post_hidden = get_usermeta(get_current_user_id(), 'metaboxhidden_post');
+  $index = array_search('postexcerpt', $post_hidden);
+  if ($index !== false) {
+    unset($post_hidden[$index]);
+    $post_hidden = array_values($post_hidden);
+    update_user_meta(get_current_user_id(), 'metaboxhidden_post', $post_hidden);
+  }
 }
