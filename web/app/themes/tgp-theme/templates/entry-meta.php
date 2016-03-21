@@ -6,4 +6,4 @@
     }
 ?>
 
-<time datetime="<?= date('c', $date); ?>"><?= date('F jS, Y', $date) ?></time>
+<time datetime="<?= date('c', $date); ?>" data-year-month="<?= date('Y-m', $date) ?>"><?= date('F jS, Y', $date) ?></time>

@@ -6,7 +6,7 @@
 
 ?>
 
-<article class="alternating-rows">
+<article class="alternating-rows tgp-post js-post">
     <a class="image" href="<?= get_the_permalink() ?>">
         <?= get_the_post_thumbnail(null, 'thumbnail') ?>
     </a>

@@ -33,10 +33,39 @@
         // JavaScript to be fired on the home page, after the init JS
       }
     },
-    // About us page, note the change from about-us to about_us.
-    'about_us': {
+    // Events Timeline page, note the change from events-timeline to events_timeline.
+    'events_timeline': {
       init: function() {
-        // JavaScript to be fired on the about us page
+        var $container = $('.js-events-container');
+        var height = $container.height();
+        $container.css({
+          'height': height,
+          'overflow-y': 'scroll'
+        });
+
+        // Add margin to events so it's scrollable within container
+        var lastEventHeight = $('.js-events-container .js-post:last-child').height();
+        $('.js-events').css('margin-bottom', height - lastEventHeight);
+
+        $('.js-timeline-node').on('mouseenter', function(event) {
+          event.preventDefault();
+          var yearMonth = $(this).data('yearMonth');
+          var $eventTimestamps = $('.js-events-container [data-year-month="' + yearMonth + '"]');
+          var $events = $eventTimestamps.parents('.js-post');
+          var $event = $eventTimestamps.first().parents('.js-post');
+
+          var currentScroll = $container.scrollTop();
+          var eventOffset = $event.position().top;
+          $container.animate({ scrollTop: currentScroll + eventOffset }, 250);
+
+          $container.addClass('is-scrolled');
+          $events.addClass('is-active');
+        });
+
+        $('.js-timeline-node').on('mouseleave', function(event) {
+          $container.removeClass('is-scrolled');
+          $container.find('.js-post').removeClass('is-active');
+        });
       }
     }
   };

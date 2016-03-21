@@ -106,3 +106,23 @@
         }
     }
 }
+
+.events-timeline {
+    .events-container {
+        position: relative;
+
+        .tgp-post {
+            transition: opacity 300ms;
+        }
+
+        &.is-scrolled {
+            .tgp-post {
+                opacity: 0.5;
+
+                &.is-active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
