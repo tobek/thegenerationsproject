@@ -25,101 +25,148 @@
 @import "sections/home";
 @import "sections/team";
 
-// Most of the properties from this plugin are applied inline by JS so lots of importants here
-body .sangar-slideshow-container {
-    div.sangar-control-panel {
-        display: none;
+
+// Many properties from this plugin are applied inline by JS so lots of !importants here
+.gss-container {
+    .cycle-slideshow {
+        background-image: linear-gradient(151deg, rgba(70, 66, 71, 0.9), rgba(37, 34, 38, 0.9));
     }
 
-    .sangar-arrow-left,
-    .sangar-arrow-right,
-    .sangar-pagination-bullet {
-        opacity: 1 !important;
-    }
-
-    // .sangar-arrow-left,
-    // .sangar-arrow-right{
-    //     @include white-box(!important);
-    // }
-
-    .sangar-pagination-wrapper.wrapper-bullet {
-        left: 20px !important;
-        bottom: 20px !important;
-        margin-left: 0 !important;
-    }
-
-    .sangar-content-wrapper .sangar-content {
-        .sangar-textbox {
-            padding: 0;
+    .home & {
+        .cycle-slideshow {
+            overflow: hidden;
         }
-
-        // Prevent transition - always show
-        .sangar-textbox-content,
-        .sangar-textbox-title,
-        .sangar-textbox-description {
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-
-        .sangar-textbox-content {
-            @include white-box(!important);
-            padding: 0 !important;
-
-            .sangar-textbox-title p {
-                @include yellow-box(!important);
-                @include font-h3(!important);
-                display: inline-block !important;
-                padding: 9px 20px 6px !important;
-            }
-            .sangar-textbox-description {
-                margin: 0;
-                padding: 15px 42px 27px 21px;
-
-                div {
-                    color: #4a4a4a !important;
-                    font-size: 18px !important;
-                    line-height: 1.4 !important;
-                }
-            }
+        img.cycle-slide {
+            top: 0 !important;
+            bottom: auto !important;
+            width: 100% !important;
+            height: auto !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0 auto !important;
         }
     }
-}
 
-
-#slideshow-wrapper1 {
-    #information1.slideshow-information {
+    .gss-info {
+        overflow: visible;
+    }
+    .gss-captions {
         @include white-box();
-        opacity: 0.9 !important;
+        z-index: 100;
+        position: absolute;
+        bottom: 100%;
+        right: 0;
+        width: 66.67%;
+        padding: 0;
+        min-height: 0 !important;
 
-        .slideshow-info-heading {
-            @include yellow-box();
-            @include font-h3();
-            font-size: 16px;
-            display: inline-block;
+        h3 {
+            @include yellow-box(!important);
             padding: 7px 12px 4px;
+            font-size: 16px;
 
             &:empty {
                 display: none;
             }
-        }
-
-        .slideshow-info-content {
-            color: #4a4a4a;
-            font-size: 14px;
-            padding: 10px 12px;
 
             a {
-                color: black;
+                color: #4a4a4a;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .image-caption {
+            padding: 10px 12px;
+            color: #4a4a4a;
+            font-size: 14px;
+            line-height: 1.4;
+
+            &:empty {
+                display: none;
+            }
+
+            a {
+                color: #4a4a4a;
                 text-decoration: underline;
 
                 &:hover {
-                    color: #666
+                    color: #888;
                 }
             }
+        }
 
-            &:empty {
-                padding: 5px 0;
+        .home & {
+            h3 {
+                padding: 9px 20px 6px;
+                font-size: 20px;
             }
+            .image-caption {
+                padding: 15px 42px 27px 21px;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .gss-nav {
+        position: absolute;
+        float: none;
+        bottom: 100%;
+        height: 0; // so that the middle of this element, between the two actual navs, doesn't block click target of image behind it
+        width: 100%;
+        margin: 0 0 40% 0;
+
+        .home & {
+            // Home page slideshow has different aspect ratio
+            margin-bottom: 20%;
+        }
+
+        .gss-next {
+            float: right;
+        }
+
+        .gss-prev, .gss-next {
+            width: 36px;
+            height: 32px;
+            font-size: 32px;
+            border-color: transparent;
+            color: #ffd923;
+        }
+    }
+
+    .gss-pager {
+        right: auto;
+        left: 5px;
+
+        a {
+            background-color: rgba(73, 73, 73, 0.9);
+            border: solid 1px #ffd923;
+
+            &:hover,
+            &.cycle-pager-active {
+                background-color: #ffd923;
+            }
+        }
+    }
+
+    .carousel-pager {
+        margin: 0;
+        padding: 10px;
+    }
+    .cycle-carousel-wrap {
+        margin: 10px 0 0 5px !important;
+    }
+    .cycle-slide {
+        cursor: pointer;
+
+        img {
+            border: 1px solid transparent;
+            transition: border-color 300ms;
+        }
+        &:hover img {
+            border: 1px solid #ffd923;
         }
     }
 }

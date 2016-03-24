@@ -7,8 +7,7 @@
         $feat_img_url = Utils\get_feat_img('large');
 
         $gallery_shortcode = null;
-        $content = Utils\extract_preg('/\[gallery [^\]]*\]/', get_the_content(), $gallery_shortcode);
-
+        $content = Utils\extract_gallery_shortcode(get_the_content(), $gallery_shortcode);
         $content = apply_filters('the_content', $content);
     ?>
 
@@ -27,18 +26,7 @@
                     </div>
 
                     <div class="col-ms-12 col-sm-12 col-md-7">
-                        <?php //do_shortcode($gallery_shortcode) ?>
-                        <?php if (function_exists('slideshow')) {
-                            slideshow(true, null, $post->ID, [
-                                'layout' => 'responsive',
-                                'resizeimages' => true,
-                                'auto' => false,
-                                'autospeed' => 20,
-                                'fadespeed' => 5,
-                                'infospeed' => 5,
-                                'showthumbs' => true,
-                            ]);
-                        } ?>
+                        <?= do_shortcode(str_replace('gallery', 'gss', $gallery_shortcode)) ?>
                     </div>
                 <?php } else if ($feat_img_url) { ?>
                     <div class="col-xs-12 col-ms-9 col-sm-6 post-content-wrapper">

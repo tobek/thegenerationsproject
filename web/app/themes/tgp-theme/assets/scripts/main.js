@@ -19,6 +19,19 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+
+        // Horrible no good hack to make clicking on a slideshow take you to any link in slideshow caption
+        $('#gslideshow').on('click', '.cycle-slideshow:not(".carousel-pager"), h3.image-title', function(event) {
+          if ($(event.target).parents('.gss-pager, .gss-nav').length) {
+            return;
+          }
+
+          var $slideshow = $(this).parents('#gslideshow');
+          var $captionLink = $slideshow.find('.gss-captions a[href]').first();
+          if ($captionLink.length) {
+            window.location.href = $captionLink.attr('href');
+          }
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

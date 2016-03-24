@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "54ea39fe74b5c8e8578c6dabaac4ab95",
-    "content-hash": "1b2c4e239e1abfc573e31ec0dd1b25d8",
+    "hash": "4e2344fb25878f57e5ce3ed39bb61105",
+    "content-hash": "cf1b2acc19391f312154c31ee07fe5ed",
     "packages": [
         {
             "name": "composer/installers",
@@ -344,6 +344,26 @@
             "homepage": "https://wordpress.org/plugins/featured-image-column/"
         },
         {
+            "name": "wpackagist-plugin/gallery-slideshow",
+            "version": "1.3.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/gallery-slideshow/",
+                "reference": "tags/1.3.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/gallery-slideshow.1.3.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/gallery-slideshow/"
+        },
+        {
             "name": "wpackagist-plugin/hello-dolly",
             "version": "1.6",
             "source": {
@@ -382,46 +402,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/"
-        },
-        {
-            "name": "wpackagist-plugin/sangar-slider-lite",
-            "version": "1.2",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/sangar-slider-lite/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/sangar-slider-lite.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/sangar-slider-lite/"
-        },
-        {
-            "name": "wpackagist-plugin/slideshow-gallery",
-            "version": "1.6.3",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/slideshow-gallery/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/slideshow-gallery.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/slideshow-gallery/"
         }
     ],
     "packages-dev": [],

@@ -16,12 +16,21 @@
         'post_type' => 'post',
         'posts_per_page' => 3,
     ]);
+
+    while (have_posts()) : the_post();
+        $content = get_the_content();
+        break;
+    endwhile;
+
+    $gallery_shortcode = null;
+    $content = Utils\extract_gallery_shortcode($content, $gallery_shortcode, '5:2', false, true);
+    // $content = apply_filters('the_content', $content);
 ?>
 
 <div class="slideshow">
-    <?php while (have_posts()) : the_post(); ?>
-        <?= the_content(); ?>
-    <?php endwhile; ?>
+    <?php if ($gallery_shortcode) { ?>
+        <?= do_shortcode($gallery_shortcode) ?>
+    <?php } ?>
 </div>
 
 <div class="container">

@@ -43,15 +43,37 @@ function get_months_with_events() {
     return array($events, $months_with_events);
 }
 
+// Removes the matching pattern from subject, and returns matching pattern or first captured group if any
 function extract_preg($pattern, $subject, &$result) {
     preg_match($pattern, $subject, $matches);
 
     if (isset($matches) && isset($matches[0])) {
-        $result = $matches[0];
-        return trim(str_replace($result, '', $subject));
+        if (isset($matches[1])) {
+            $result = $matches[1];
+        }
+        else {
+            $result = $matches[0];
+        }
+        return trim(str_replace($matches[0], '', $subject));
     }
     else {
         $result = null;
         return $subject;
     }
+}
+
+// Removes and formats gallery shortcode from $subject and places it in $result, and returns $subject with shortcode removed
+function extract_gallery_shortcode($subject, &$result, $ratio='3:2', $carousel=true, $autoplay=false) {
+    $gallery_ids = null;
+
+    $carousel = $carousel ? "carousel='fx=carousel'" : '';
+    $autoplay = $autoplay ? '&pause-on-hover=true&paused=false&timeout=4000&speed=1000' : '';
+
+    $subject = extract_preg('/\[gallery [^\]]*(ids="[^"]*")[^\]]*\]/', $subject, $gallery_ids);
+
+    if ($gallery_ids) {
+        $result= "[gss $gallery_ids $carousel options='auto-height=$ratio&speed=250&swipe=true$autoplay']";
+    }
+
+    return $subject;
 }
