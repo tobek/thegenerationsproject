@@ -3,10 +3,24 @@
 
     $feat_img_url = Utils\get_feat_img('large');
 
+    $other_stuff = null; // HTML content for column alongside CMS page content
+
     $form_shortcode = null;
     $content = Utils\extract_preg('/\[contact-form-7 [^\]]*\]/', get_the_content(), $form_shortcode);
 
-    $two_col = $content && $form_shortcode;
+    if ($form_shortcode) {
+        $other_stuff = do_shortcode($form_shortcode);
+    }
+    else {
+        $content_template_path = locate_template("templates/content-{$post->post_name}.php");
+        if (file_exists($content_template_path)) {
+            ob_start();
+            include $content_template_path;
+            $other_stuff = ob_get_clean();
+        }
+    }
+
+    $two_col = $content && $other_stuff;
 
     $subtitle = get_post_meta($post->ID, 'subtitle', true);
 
@@ -36,9 +50,9 @@
 
     <div class="<?= $two_col ? 'col-ms-12 col-sm-7 col-ms-center' : 'col-sm-9 col-lg-7 col-center' ?> post-content-wrapper">
         <div class="post-content">
-            <?php if ($form_shortcode) { ?>
+            <?php if ($other_stuff) { ?>
                 <div class="post-content-inner">
-                    <?= do_shortcode($form_shortcode) ?>
+                    <?= $other_stuff ?>
                 </div>
             <?php } else { ?>
                 <?php actual_content($content, $subtitle) ?>
