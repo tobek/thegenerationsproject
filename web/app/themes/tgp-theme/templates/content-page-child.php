@@ -9,7 +9,7 @@
     $content = Utils\extract_preg('/\[contact-form-7 [^\]]*\]/', get_the_content(), $form_shortcode);
 
     if ($form_shortcode) {
-        $other_stuff = do_shortcode($form_shortcode);
+        $other_stuff = '<div class="tgp-form-container">' . do_shortcode($form_shortcode) . '</div>';
     }
     else {
         $content_template_path = locate_template("templates/content-{$post->post_name}.php");

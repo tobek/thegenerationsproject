@@ -14,14 +14,21 @@
   @extend .btn-default;
 }
 
-// Contact Form 7 plugin forms
-.wpcf7 form {
+// Using Contact Form 7 plugin class names (wpcf7)
+.tgp-form-container form {
     color: #4a4a4a;
 
     label {
         font-family: $font-stack-sans;
         font-weight: 500;
         text-transform: uppercase;
+    }
+
+    .form-instructions {
+        display: inline-block;
+        margin-bottom: 5px;
+        font-family: $font-stack-sans;
+        font-weight: 500;
     }
 
     p > label {
@@ -32,7 +39,7 @@
         display: block;
         margin-top: 8px;
 
-        input[type=text], input[type=email], textarea {
+        input[type=text], input[type=number], input[type=email], textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #bab5bb;
@@ -49,6 +56,43 @@
         span[role=alert] {
             margin-top: 5px;
             text-transform: none;
+        }
+    }
+
+    .form-section {
+        margin-top: 20px;
+    }
+
+    .radio-table {
+        width: 100%;
+
+        td {
+            width: 33%;
+            vertical-align: top;
+        }
+
+            .weird-fake-newline {
+                position: absolute;
+                margin-top: 25px;
+            }
+
+        label {
+            margin-top: 10px;
+            color: #6c6c6c;
+            font-family: $font-stack-serif;
+            font-weight: normal;
+            text-transform: none;
+        }
+        tr:first-child label {
+            margin-top: 0;
+        }
+
+        input[type=radio] {
+            margin-right: 10px;
+        }
+
+        .wpcf7-form-control-wrap {
+            margin-top: 0;
         }
     }
 
@@ -112,4 +156,64 @@
             @extend .alert-info;
         }
     }
+
+    .money-input {
+        input {
+            padding-left: 20px !important;
+        }
+
+        &:before {
+            content: '$';
+            position: absolute;
+            padding: 11px;
+        }
+    }
+
+    .braintree-wrap {
+        position: relative;
+
+        .form-instructions {
+            position: absolute;
+            display: none;
+            top: 10px;
+            left: 220px;
+        }
+    }
+
+    .form-section.donate {
+        text-align: center;
+
+        input[type=submit] {
+            font-size: 20px;
+            font-weight: 500;
+            padding: 12px 28px 10px;
+        }
+    }
+}
+
+.form-success {
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    padding: 100px 60px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 250ms, visibility 250ms;
+
+    .is-success & {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    h2 {
+        margin-bottom: 50px;
+    }
+}
+.tgp-form-container form {
+    transition: opacity 250ms, visibility 250ms;
+}
+.tgp-form-container.is-success form {
+    opacity: 0.05;
 }
