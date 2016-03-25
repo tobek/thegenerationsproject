@@ -169,15 +169,8 @@
         }
     }
 
-    .braintree-wrap {
-        position: relative;
-
-        .form-instructions {
-            position: absolute;
-            display: none;
-            top: 10px;
-            left: 220px;
-        }
+    #braintree-form {
+        margin-top: 10px;
     }
 
     .form-section.donate {
