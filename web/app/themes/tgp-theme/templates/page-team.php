@@ -12,6 +12,13 @@
         'orderby' => 'menu_order',
         'order' => 'ASC',
     ]);
+
+    $advocates_query = new WP_Query([
+        'post_type' => 'tgp_person',
+        'tgp_role' => 'advocate',
+        'orderby' => 'menu_order',
+        'order' => 'ASC',
+    ]);
 ?>
 <div class="container">
     <?php // the_content(); ?>
@@ -33,7 +40,7 @@
         <?php endwhile; ?>
     </div>
 
-    <div class="board">
+    <div class="board" id="board">
         <h1>Board of Directors</h1>
 
         <div class="row row-eq-height">
@@ -47,4 +54,25 @@
             <?php endwhile; ?>
         </div>
     </div>
+
+    <?php if ($advocates_query->have_posts()) { ?>
+        <div class="advocates" id="advocates">
+            <h1>Advocates</h1>
+
+            <div class="row row-eq-height">
+                <?php while ($advocates_query->have_posts()) : $advocates_query->the_post(); ?>
+                    <div class="col-xs-center col-sm-3 col-ms-6 col-xs-8">
+                        <div class="card">
+                            <div class="image-wrapper">
+                                <?= get_the_post_thumbnail(null, 'medium', ['alt' => get_the_title()]) ?>
+                                <h3 class="name"><?php the_title() ?></h3>
+                            </div>
+
+                            <div class="text"><?php the_content() ?></div>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+        </div>
+    <?php } ?>
 </div>
