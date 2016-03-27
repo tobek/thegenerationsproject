@@ -1,6 +1,8 @@
 <header class="banner">
     <div class="timeline">
-        <?php for ($year = 1900; $year <= 2020; $year += 10) { ?><span class="chunk"><?= $year ?></span><?php } ?>
+        <div class="timeline-bg">
+            <?php for ($year = 1820; $year <= 2120; $year += 10) { ?><span class="chunk"><?= $year ?></span><?php } ?>
+        </div>
     </div>
 
     <div class="container">

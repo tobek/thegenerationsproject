@@ -21,20 +21,48 @@ h1, h2, h3, h4, h5, h6 {
     width: calc(100% + 60px);
     margin: 10px 0 25px -30px;
     white-space: nowrap;
+    text-align: center;
     font-family: $font-stack-sans;
     font-weight: 500;
 
     .month {
         @include gray-box();
         cursor: default;
+        position: relative;
         display: inline-block;
-        width: 50px;
+        width: 42px;
         margin-right: 1px;
-        padding: 5px 7px 4px;
+        padding: 5px 7px 4px 0;
 
         &:hover, &:active, &:focus {
             color: #ffee49;
             text-decoration: none;
+        }
+
+        &:after,
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+        }
+        &:after {
+            right: 0;
+            border-left: 8px solid transparent;
+            border-bottom: 29px solid #eeeeee;
+        }
+        &:before {
+            left: -8px;
+            border-right: 8px solid rgba(63,59,64,0.925);
+            border-top: 29px solid rgba(0, 0, 0, 0); // overlaps .rr-left
+        }
+
+        &.year-end:after {
+            border-bottom-color: #ffee49;
+            // this works but ends up with a fat chunk of yellow below, not just the line, so the .year bit would need its own angular border to cover it... etc.
+            // border-left-width: 9px;
+            // border-bottom-width: 44px;
         }
 
         .letter {
@@ -70,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
     .year {
         position: absolute;
         bottom: -12px;
-        margin-left: 2px;
+        margin-left: -4px;
         font-size: 9.6px;
         color: #4a4a4a;
     }

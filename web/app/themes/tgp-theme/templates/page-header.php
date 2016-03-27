@@ -61,6 +61,10 @@
                 ?><span class="year"><?= date('Y', $timestamp) ?></span><?php
             }
 
+            if ($month === 'Dec') {
+                $classes .= ' year-end';
+            }
+
             ?><a class="month <?= $classes ?>" data-year-month="<?= $year_month ?>" <?= $link ? "href=\"$link\"" : '' ?>><span class="letter"><?= $month[0] ?></span></a><?php
 
         } ?>
