@@ -326,7 +326,7 @@ function admin_css() { ?>
       color: transparent;
     }
     .media-sidebar .attachment-details [data-setting="description"] .name:before {
-      content: 'Link this slide to:';
+      content: 'Link to:';
       position: absolute;
       color: black;
       white-space: nowrap;
