@@ -52,6 +52,7 @@
     }
     .gss-captions {
         @include white-box();
+        cursor: pointer;
         z-index: 100;
         position: absolute;
         bottom: 100%;

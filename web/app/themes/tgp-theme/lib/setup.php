@@ -316,6 +316,24 @@ function admin_css() { ?>
       font-size: 80%;
       font-style: italic;
     }
+
+    /* hacks to use media description field for slideshow links */
+    .media-sidebar .attachment-details [data-setting="alt"] {
+      display: none;
+    }
+    .media-sidebar .attachment-details [data-setting="description"] .name {
+      position: relative;
+      color: transparent;
+    }
+    .media-sidebar .attachment-details [data-setting="description"] .name:before {
+      content: 'Link this slide to:';
+      position: absolute;
+      color: black;
+      white-space: nowrap;
+    }
+    .media-sidebar .attachment-details [data-setting="description"] textarea {
+      height: 30px;
+    }
   </style>
 <?php }
 

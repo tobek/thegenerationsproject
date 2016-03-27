@@ -71,8 +71,10 @@ function extract_gallery_shortcode($subject, &$result, $ratio='3:2', $carousel=t
 
     $subject = extract_preg('/\[gallery [^\]]*(ids="[^"]*")[^\]]*\]/', $subject, $gallery_ids);
 
+    $cycle_options = "auto-height=$ratio&speed=250&swipe=true$autoplay";
+
     if ($gallery_ids) {
-        $result= "[gss $gallery_ids $carousel options='auto-height=$ratio&speed=250&swipe=true$autoplay']";
+        $result= "[gss $gallery_ids $carousel options='$cycle_options']";
     }
 
     return $subject;

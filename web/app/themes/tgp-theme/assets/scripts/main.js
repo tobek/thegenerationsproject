@@ -21,15 +21,16 @@
         // JavaScript to be fired on all pages
 
         // Horrible no good hack to make clicking on a slideshow take you to any link in slideshow caption
-        $('#gslideshow').on('click', '.cycle-slideshow:not(".carousel-pager"), h3.image-title', function(event) {
+        $('#gslideshow').on('click', '.cycle-slideshow:not(".carousel-pager"), .gss-captions', function(event) {
           if ($(event.target).parents('.gss-pager, .gss-nav').length) {
             return;
           }
 
           var $slideshow = $(this).parents('#gslideshow');
-          var $captionLink = $slideshow.find('.gss-captions a[href]').first();
-          if ($captionLink.length) {
-            window.location.href = $captionLink.attr('href');
+          var $activeImage = $slideshow.find('img.cycle-slide-active');
+          var link = $activeImage.data('linkTo');
+          if (link) {
+            window.location.href = link;
           }
         });
       },
