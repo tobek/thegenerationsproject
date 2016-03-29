@@ -29,8 +29,9 @@
             <?php the_content() ?>
         </div>
     <?php } else { ?>
-        <div class="body excerpt">
-            <?= get_the_excerpt() ?>
+        <?php $excerpt = get_the_excerpt(); ?>
+        <div class="body excerpt <?= strlen($excerpt) < 200 ? 'is-short' : '' ?>">
+            <?= $excerpt ?>
         </div>
     <?php } ?>
 </article>
