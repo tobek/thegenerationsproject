@@ -92,50 +92,11 @@
     }
 
     #menu-main-menu > .menu-item {
-        display: table-cell;
+        display: inline-block;
         position: static;
         // cursor: pointer;
         width: 20%;
-        height: 50px;
-        vertical-align: middle;
-        text-align: center;
-
-        // Without relative position on .menu-items (which we don't want cause it makes submenu positioning much more difficult, box-shadows don't seem to be working here. Instead creating box shadows with these pseudo elements and positioning them hackily.)
-        &:before, &:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 20%; // relative to #menu-main-menu, so needs to be same as .menu-item
-            height: 100%;
-            pointer-events: none;
-            box-shadow: 2px 0 3px 0 rgba(0, 0, 0, 0.5);
-        }
-        &:before {
-            display: none;
-        }
-
-        &:nth-child(1) {
-            background-color: #edca00;
-            &:before { display: block; margin-left: -20%; }
-            &:after { margin-left: 0; }
-        }
-        &:nth-child(2) {
-            background-color: #fcda19;
-            &:after { margin-left: 20%; }
-        }
-        &:nth-child(3) {
-            background-color: #ffe033;
-            &:after { margin-left: 40%; }
-        }
-        &:nth-child(4) {
-            background-color: #ffe659;
-            &:after { margin-left: 60%; }
-        }
-        &:nth-child(5) {
-            background-color: #ffec82;
-            &:after { margin-left: 80%; }
-        }
+        background: none;
 
         &:hover, &.current-menu-item, &.current-menu-ancestor {
             background: none;
@@ -150,15 +111,52 @@
             }
         }
 
-        a {
+        & > a {
             @include font-nav();
-            display: inline;
-            top: 1px;
-            padding: 0;
+            display: inline-block;
+            width: 100%;
+            height: 50px;
+            // top: 1px;
+            padding: 16px 0 0;
+            vertical-align: middle;
+            text-align: center;
+            box-shadow: 2px 0 3px 0 rgba(0, 0, 0, 0.5);
 
             &:focus, &:hover {
                 background: none;
             }
+        }
+
+        &:nth-child(1) > a {
+            z-index: 5;
+            background-color: #edca00;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                box-shadow: 2px 0 3px 0 rgba(0, 0, 0, 0.5);
+            }
+        }
+        &:nth-child(2) > a {
+            z-index: 4;
+            background-color: #fcda19;
+        }
+        &:nth-child(3) > a {
+            z-index: 3;
+            background-color: #ffe033;
+        }
+        &:nth-child(4) > a {
+            z-index: 2;
+            background-color: #ffe659;
+        }
+        &:nth-child(5) > a {
+            z-index: 1;
+            background-color: #ffec82;
         }
 
         .sub-menu {
@@ -167,7 +165,6 @@
             display: table;
             list-style: none;
             width: 100%;
-            height: 50px;
             top: 50px;
             padding: 0;
             background-color: $gray-bg-dark;
@@ -175,14 +172,13 @@
             .menu-item {
                 z-index: 1;
                 display: table-cell;
-                height: 50px;
                 vertical-align: middle;
-                // margin-left: -5px; // weird, otherwise gap between menu items loses hover and submenu disappears
-                // padding-right: 25px;
+                text-align: center;
+                height: 50px;
 
                 a {
                     @include font-sub-nav();
-                    position: relative;
+                    padding: 15px 20px;
                 }
             }
 
