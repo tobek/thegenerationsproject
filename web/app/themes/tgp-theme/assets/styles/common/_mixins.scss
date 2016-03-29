@@ -8,6 +8,10 @@
     box-shadow: 0 2px 3px 0 rgba(73, 73, 73, 0.5) unquote($important);
 }
 
+@mixin yellow-box-hover($important:"") {
+    background: lighten($yellow-box-bg, 10%) linear-gradient(to top, lighten($yellow-box-bottom, 10%), lighten($yellow-box-top, 10%)) unquote($important);
+}
+
 @mixin white-box($important:"") {
     background: $white-box-bg linear-gradient(283deg, $white-box-bottom, $white-box-top) unquote($important);
     box-shadow: 0 2px 3px 0 rgba(73, 73, 73, 0.5) unquote($important);
