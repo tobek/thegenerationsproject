@@ -95,7 +95,7 @@ function extract_gallery_shortcode($subject, &$result, $ratio='3:2', $carousel=t
     $gallery_ids = null;
 
     $carousel = $carousel ? "carousel='fx=carousel'" : '';
-    $autoplay = $autoplay ? '&pause-on-hover=true&paused=false&timeout=5000&speed=1000' : '';
+    $autoplay = $autoplay ? '&pause-on-hover=false&paused=false&timeout=5000&speed=1000' : '';
 
     $subject = extract_preg('/\[gallery [^\]]*(ids="[^"]*")[^\]]*\]/', $subject, $gallery_ids);
 
