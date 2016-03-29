@@ -103,6 +103,12 @@ function assets() {
     wp_enqueue_script('comment-reply');
   }
 
+  if (is_front_page()) {
+    // To create or update this, run from theme directory:
+    //     node_modules/.bin/modernizr -c assets/scripts/modernizr-config.json -d assets/scripts/modernizr.js
+    wp_enqueue_script('modernizr/js', Assets\asset_path('scripts/modernizr.js'), null, null, false);
+  }
+
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
