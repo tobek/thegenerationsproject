@@ -4,8 +4,9 @@
         $event_date = date('M d, Y', $date);
     }
 
-    global $dont_link_posts;
+    global $dont_link_posts, $show_full_content;
     $link_posts = ! isset($dont_link_posts) || ! $dont_link_posts;
+    $show_full_content = isset($show_full_content) && $show_full_content;
 ?>
 
 <article class="alternating-rows tgp-post js-post">
@@ -23,5 +24,13 @@
         <?php } ?>
     </header>
 
-    <div class="excerpt"><?= get_the_excerpt() ?></div>
+    <?php if ($show_full_content) { ?>
+        <div class="body full-content">
+            <?php the_content() ?>
+        </div>
+    <?php } else { ?>
+        <div class="body excerpt">
+            <?= get_the_excerpt() ?>
+        </div>
+    <?php } ?>
 </article>

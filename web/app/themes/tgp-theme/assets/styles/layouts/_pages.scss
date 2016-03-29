@@ -27,7 +27,7 @@
 
 .alternating-rows {
     @include white-box();
-    height: 200px;
+    // height: 200px;
     margin-bottom: 30px;
 
     .image {
@@ -59,8 +59,16 @@
         letter-spacing: 0.9px;
     }
 
-    .excerpt {
+    .body {
         padding: 20px;
+
+        p {
+            margin: 10px 0;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
     }
 
     &:nth-child(2n+1) {
@@ -81,7 +89,7 @@
             margin: 0 50px 0 0;
         }
 
-        .excerpt {
+        .body {
             text-align: left;
         }
     }

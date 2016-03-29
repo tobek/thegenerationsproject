@@ -8,8 +8,9 @@
             'order' => 'ASC',
         ]);
 
-        global $dont_link_posts;
+        global $dont_link_posts, $show_full_content;
         $dont_link_posts = true;
+        $show_full_content = true;
     }
     else {
         $sub_pages_query = new WP_Query([
