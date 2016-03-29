@@ -28,10 +28,14 @@
         if (! isset($months_with_events)) {
             list($events, $months_with_events) = Utils\get_months_with_events();
         }
+
+        // PHP associative arrays are ordered so this works:
+        $oldest_timestamp = strtotime(array_keys($months_with_events)[0]);
+
         ?>
     <div class="timeline">
-        <?php for ($i=0; $i < 24; $i++) {
-            $timestamp = strtotime("+$i month");
+        <?php for ($i=-1; $i < 23; $i++) {
+            $timestamp = Utils\add_months($oldest_timestamp, $i);
             $year_month = date('Y-m', $timestamp);
             $month = date('M', $timestamp);
 

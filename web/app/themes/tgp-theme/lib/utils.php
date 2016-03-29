@@ -43,6 +43,34 @@ function get_months_with_events() {
     return array($events, $months_with_events);
 }
 
+// Takes in unix timestamp, adds # of months, returns unix timestamp
+// Adapted from http://stackoverflow.com/a/24014541/458614
+function add_months($timestamp, $months) {
+    $date = new \DateTime("@$timestamp");
+
+    $next = new \DateTime($date->format('Y-m-d'));
+    if ($months >= 0) {
+        $next->modify('last day of +'.$months.' month');
+    }
+    else {
+        $next->modify('last day of '.$months.' month');
+    }
+
+    if($date->format('d') > $next->format('d')) {
+        $interval = $date->diff($next);
+    } else {
+        $interval = new \DateInterval('P' . abs($months) . 'M');
+
+        if ($months < 0) {
+            $interval->invert = 1;
+        }
+    }
+
+    $newDate = $date->add($interval);
+
+    return $newDate->getTimestamp();
+}
+
 // Removes the matching pattern from subject, and returns matching pattern or first captured group if any
 function extract_preg($pattern, $subject, &$result) {
     preg_match($pattern, $subject, $matches);
