@@ -300,7 +300,7 @@
 
                 .menu-item {
                     height: 0;
-                    transition: height 250ms;
+                    transition: height 250ms, padding 250ms;
                 }
                 &.current-menu-item,
                 &.current-menu-ancestor,
