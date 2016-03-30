@@ -13,6 +13,11 @@
   & > [class*='col-'] {
     display: flex;
     flex-direction: column;
+
+    // Seems like Safari doesn't do great with .row-eq-height's flexbox (e.g. Teams page it breaks to 2 per row instead of 3), but this fixes it:
+    &:first-child {
+      margin-right: -1px;
+    }
   }
 }
 
