@@ -213,4 +213,121 @@
             }
         }
     }
+
+    .mobile-menu-link {
+        display: none;
+    }
+ 
+    @media (max-width: 850px) {
+        .mobile-menu-link {
+            cursor: pointer;
+            display: block;
+            @include yellow-box();
+            @include font-nav();
+            float: right;
+            font-size: 20px;
+            padding: 10px 14px 8px;
+
+            &:hover {
+                @include yellow-box-hover();
+            }
+        }
+
+        .menu-main-menu-container {
+            display: none;
+        }
+        .menu-main-menu-container {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 220px;
+            padding: 150px 0 30px;
+            background-color: #303030;
+
+            transform: translateX(-100%);
+            -webkit-transition: -webkit-transform 250ms;
+            transition: transform 250ms;
+            &.is-visible {
+                transform: translateX(0);
+            }
+        
+            #menu-main-menu > .menu-item {
+                position: relative;
+                display: block;
+                width: 100%;
+
+                a {
+                    padding-left: 20px;
+                    text-align: left;
+                }
+
+                &:nth-child(1) > a:before {
+                    display: none;
+                }
+
+                &.menu-item-has-children:after {
+                    content: "\25be";
+                    z-index: 10;
+                    display: inline;
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    -webkit-transition: -webkit-transform 250ms;
+                    transition: transform 250ms;
+                }
+
+                .sub-menu {
+                    position: static;
+                    display: block;
+
+                    &:before, &:after {
+                        display: none;
+                    }
+
+                    .menu-item {
+                        display: block;
+                        text-align: left;
+
+                        a {
+                            display: inline-block;
+                            width: 100%;
+                            height: 100%;
+                            padding: 5px 15px 5px 20px;
+                        }
+                    }
+                }
+
+                .menu-item {
+                    height: 0;
+                    transition: height 250ms;
+                }
+                &.current-menu-item,
+                &.current-menu-ancestor,
+                &.is-active {
+                    &:after {
+                        transform: rotateX(180deg);
+                    }
+
+                    .menu-item {
+                        height: 30px;
+
+                        &:first-child {
+                            height: 40px;
+                            padding-top: 10px;
+                        }
+                        &:last-child {
+                            height: 40px;
+                            padding-bottom: 10px;
+                        }
+
+                        // 2 lines long Bonnie Burke/GMHC Project
+                        &.menu-item-230 {
+                            height: 55px;
+                        }
+                    }
+                }
+            } // end #menumain-menu > .menu-item
+        }
+    }
 }

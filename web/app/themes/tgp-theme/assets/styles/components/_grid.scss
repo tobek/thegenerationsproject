@@ -16,6 +16,13 @@
   }
 }
 
+// Grid jumps to way too skinny on larger screen-md sizes, so chill
+@media (min-width: 850px) and (max-width: $screen-md) {
+  .container {
+    width: 97%;
+  }
+}
+
 
 // Bootstrap Mid-Small - col-ms-* - the missing grid set for Bootstrap3.
 // via https://gist.github.com/andyl/6360906

@@ -33,6 +33,49 @@
             window.location.href = link;
           }
         });
+
+        var navSelector = '.banner .menu-main-menu-container';
+        var $nav = $(navSelector);
+        $('.js-toggle-mobile-menu').on('click', function() {
+          if ($nav.hasClass('is-visible')) {
+            $nav.removeClass('is-visible');
+            $(document).off('click.tgpMobileMenu');
+          }
+          else {
+            $nav.addClass('is-visible');
+
+            setTimeout(function() {
+              $(document).on('click.tgpMobileMenu', function(event) {
+                if (! $(event.target).parents(navSelector).addBack(navSelector).length) {
+                  event.preventDefault();
+
+                  $nav.removeClass('is-visible');
+
+                  $(document).off('click.tgpMobileMenu');
+                }
+              });
+            }, 10);
+          }
+        });
+
+        $('.menu-main-menu-container .menu-item-has-children').on('click', function(event) {
+          if ($nav.hasClass('is-visible')) {
+            // Mobile menu is open
+
+            if ($(event.target).parents('.sub-menu').addBack('.sub-menu').length) {
+              // They clicked on submenu
+              return;
+            }
+
+            if ($(event.currentTarget).is('.current-menu-ancestor')) {
+              // Let user click on top-level page of an already-expanded section.
+              return;
+            }
+
+            event.preventDefault();
+            $(event.currentTarget).toggleClass('is-active');
+          }
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

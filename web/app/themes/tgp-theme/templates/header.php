@@ -18,6 +18,20 @@
                 wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']);
             endif;
             ?>
+
+            <div class="mobile-menu-link js-toggle-mobile-menu">
+                <!--
+                <?php if (is_single() && get_post_meta($post->ID, 'event_date', true)) { ?>
+                    Event
+                <?php } else if (is_single()) { ?>
+                    Home
+                <?php } else { ?>
+                    <?php the_title() ?>
+                <?php } ?>
+                -->
+                Menu
+                &#x25bc;
+            </div>
         </nav>
     </div>
 </header>
