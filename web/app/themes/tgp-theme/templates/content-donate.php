@@ -173,10 +173,10 @@
             }
 
             if (data.donation_amount === 'other') {
-                data.donation_amount = donation_amount_other;
+                data.donation_amount = data.donation_amount_other;
             }
             if (data.donate_to === 'other') {
-                data.donate_to = donate_to_other;
+                data.donate_to = data.donate_to_other;
             }
 
             data.nonce = result.nonce;
