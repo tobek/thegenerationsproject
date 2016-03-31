@@ -1,3 +1,8 @@
+<?php
+    use Roots\Sage\Extras;
+
+    $BRAINTREE_TOKEN = Extras\braintree_token();
+?>
 <div class="tgp-form-container">
     <form id="js-donate-form" method="post">
         <?php // Re-using styles made for Contact Form 7 plugin (wpcf7) ?>
@@ -5,7 +10,7 @@
         <p><label>
             Full Name<br>
             <span class="wpcf7-form-control-wrap">
-                <input type="text" name="name">
+                <input type="text" name="full_name">
             </span>
         </label></p>
 
@@ -18,11 +23,12 @@
 
         <div class="form-section">
             <label>Donate To</label>
-            <table class="radio-table">
+            <span class="form-instructions">(optional)</span>
+            <table class="radio-table donate-to js-donate-to">
                 <tr>
                     <td><label>
                         <input type="radio" name="donate_to" value="New York">
-                        New York
+                        New York Projects
                     </label></td>
                     <td><label>
                         <input type="radio" name="donate_to" value="Bonnie Burke/GMHC">
@@ -37,7 +43,7 @@
                 <tr>
                     <td><label>
                         <input type="radio" name="donate_to" value="San Francisco">
-                        San Francisco
+                        San Francisco Projects
                     </label></td>
                     <td></td>
                     <td>
@@ -51,7 +57,7 @@
 
         <div class="form-section">
             <label>Donation Amount</label>
-            <table class="radio-table">
+            <table class="radio-table js-donation-amount">
                 <tr>
                     <td><label>
                         <input type="radio" name="donation_amount" value="50">
@@ -147,18 +153,32 @@
             else if (! data.email) {
                 alert('Please enter your email address.');
                 return;
+
+            if (data.donation_amount === 'other') {
+                data.donation_amount = donation_amount_other;
             }
-            else if (! data.donation_amount || (data.donation_amount === 'other' && ! data.donation_amount_other)) {
-                alert('Please enter a donation amount!');
-                return;
+            if (data.donate_to === 'other') {
+                data.donate_to = donate_to_other;
             }
 
             data.nonce = result.nonce;
 
             $('.js-donate-button').attr('disabled', true);
 
-            $('.tgp-form-container').addClass('is-success');
-            $('html, body').animate({ scrollTop: $('.form-success').offset().top }, 250);
+            $.ajax({
+                method: 'POST',
+                url: '/api/donate-submit',
+                data: data,
+                error: function() {
+                    alert('Sorry, we had trouble processing your donation!\n\nPlease try again later or contact wes@thegenerationsproject.info');
+                    console.error('Error posting to /api/donate-submit:', arguments);
+                    $('.js-donate-button').removeAttr('disabled');
+                },
+                success: function() {
+                    $('.tgp-form-container').addClass('is-success');
+                    $('html, body').animate({ scrollTop: $('.form-success').offset().top }, 250);
+                }
+            });
         };
 
         function serializeAsObject(el) {
@@ -179,16 +199,8 @@
         }
     })(jQuery);
 
-    // test token
-    var BRAINTREE_TOKEN = "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiJmOWE5MWNjYWIzYzJkZmViMjcxNDRhZTMzMmU2OTIzMGQ0NTk4MTk5YzE2NGNlYzNlMzQ3ODFlMTQzYzIxYmEzfGNyZWF0ZWRfYXQ9MjAxNi0wMy0xNFQwNjoxMjo0OS4zNjIxNDc2NDErMDAwMFx1MDAyNm1lcmNoYW50X2lkPTM0OHBrOWNnZjNiZ3l3MmJcdTAwMjZwdWJsaWNfa2V5PTJuMjQ3ZHY4OWJxOXZtcHIiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzLzM0OHBrOWNnZjNiZ3l3MmIvY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIn0sInRocmVlRFNlY3VyZUVuYWJsZWQiOnRydWUsInBheXBhbEVuYWJsZWQiOnRydWUsInBheXBhbCI6eyJkaXNwbGF5TmFtZSI6IkFjbWUgV2lkZ2V0cywgTHRkLiAoU2FuZGJveCkiLCJjbGllbnRJZCI6bnVsbCwicHJpdmFjeVVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS9wcCIsInVzZXJBZ3JlZW1lbnRVcmwiOiJodHRwOi8vZXhhbXBsZS5jb20vdG9zIiwiYmFzZVVybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXNzZXRzVXJsIjoiaHR0cHM6Ly9jaGVja291dC5wYXlwYWwuY29tIiwiZGlyZWN0QmFzZVVybCI6bnVsbCwiYWxsb3dIdHRwIjp0cnVlLCJlbnZpcm9ubWVudE5vTmV0d29yayI6dHJ1ZSwiZW52aXJvbm1lbnQiOiJvZmZsaW5lIiwidW52ZXR0ZWRNZXJjaGFudCI6ZmFsc2UsImJyYWludHJlZUNsaWVudElkIjoibWFzdGVyY2xpZW50MyIsImJpbGxpbmdBZ3JlZW1lbnRzRW5hYmxlZCI6dHJ1ZSwibWVyY2hhbnRBY2NvdW50SWQiOiJhY21ld2lkZ2V0c2x0ZHNhbmRib3giLCJjdXJyZW5jeUlzb0NvZGUiOiJVU0QifSwiY29pbmJhc2VFbmFibGVkIjpmYWxzZSwibWVyY2hhbnRJZCI6IjM0OHBrOWNnZjNiZ3l3MmIiLCJ2ZW5tbyI6Im9mZiJ9";
-
-    braintree.setup(BRAINTREE_TOKEN, 'dropin', {
+    braintree.setup('<?= esc_js($BRAINTREE_TOKEN) ?>', 'dropin', {
         container: 'braintree-form',
-        paypal: {
-            button: {
-                type: 'checkout'
-            }
-        },
         onPaymentMethodReceived: submitDonateForm,
         onReady: donateFormReady
     });

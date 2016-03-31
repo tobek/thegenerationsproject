@@ -13,8 +13,24 @@ Env::init();
 $dotenv = new Dotenv\Dotenv($root_dir);
 if (file_exists($root_dir . '/.env')) {
   $dotenv->load();
-  $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL']);
+  $dotenv->required([
+    'DB_NAME',
+    'DB_USER',
+    'DB_PASSWORD',
+    'WP_HOME',
+    'WP_SITEURL',
+
+    'BRAINTREE_ENV',
+    'BRAINTREE_MERCHANT_ID',
+    'BRAINTREE_PUBLIC_KEY',
+    'BRAINTREE_PRIVATE_KEY',
+  ]);
 }
+
+define('BRAINTREE_ENV', env('BRAINTREE_ENV'));
+define('BRAINTREE_MERCHANT_ID', env('BRAINTREE_MERCHANT_ID'));
+define('BRAINTREE_PUBLIC_KEY', env('BRAINTREE_PUBLIC_KEY'));
+define('BRAINTREE_PRIVATE_KEY', env('BRAINTREE_PRIVATE_KEY'));
 
 /**
  * Set up our global environment constant and load its config first
