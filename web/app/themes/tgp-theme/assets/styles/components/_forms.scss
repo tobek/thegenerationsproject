@@ -63,6 +63,13 @@
         margin-top: 20px;
     }
 
+    .small-print {
+        margin-top: 30px;
+        color: #6c6c6c;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
     .radio-table {
         width: 100%;
 
@@ -70,11 +77,6 @@
             width: 33%;
             vertical-align: top;
         }
-
-            .weird-fake-newline {
-                position: absolute;
-                margin-top: 25px;
-            }
 
         label {
             margin-top: 10px;
@@ -93,6 +95,19 @@
 
         .wpcf7-form-control-wrap {
             margin-top: 0;
+        }
+
+        &.donate-to {
+            label {
+                position: relative;
+                padding: 3px 0 0 28px;
+
+                input[type=radio] {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
         }
     }
 

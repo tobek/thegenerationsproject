@@ -32,8 +32,7 @@
                     </label></td>
                     <td><label>
                         <input type="radio" name="donate_to" value="Bonnie Burke/GMHC">
-                        <span class="weird-fake-newline">GMHC</span>
-                        Bonnie Burke/
+                        Bonnie Burke/&#8203;GMHC
                     </label></td>
                     <td><label class="js-donate-to-other">
                         <input type="radio" name="donate_to" value="other">
@@ -64,8 +63,8 @@
                         $50
                     </label></td>
                     <td><label>
-                        <input type="radio" name="donation_amount" value="250">
-                        $250
+                        <input type="radio" name="donation_amount" value="500">
+                        $500
                     </label></td>
                     <td><label class="js-donation-amount-other">
                         <input type="radio" name="donation_amount" value="other">
@@ -78,8 +77,8 @@
                         $100
                     </label></td>
                     <td><label>
-                        <input type="radio" name="donation_amount" value="500">
-                        $500
+                        <input type="radio" name="donation_amount" value="1000">
+                        $1000
                     </label></td>
                     <td>
                         <div class="wpcf7-form-control-wrap money-input">
@@ -96,19 +95,27 @@
         </div>
 
         <div class="form-section">
-            <span class="form-instructions">Donate via PayPal or enter your credit card information below:</span>
+            <span class="form-instructions">Donate with PayPal or enter your credit card information below:</span>
             <div id="braintree-form"></div>
         </div>
 
         <div class="form-section donate">
-            <input class="btn btn-primary js-donate-button" type="submit" value="Donate Now" disabled="disabled">
+            <input class="btn btn-primary js-donate-button" type="submit" value="Donate" disabled="disabled">
+        </div>
+
+        <div class="form-section small-print">
+            The Generations Project is fiscally sponsored by Social and Environmental Entrepreneurs, a 501(c)3 nonprofit organization. All contributions $100 and over are tax deductible to the fullest extent allowed by law.
+            <br><br>
+            <a href="/terms">Terms &amp; Conditions</a>
+            |
+            <a href="/privacy">Privacy Policy</a>
         </div>
     </form>
 
     <div class="form-success">
         <h2>Thank you!</h2>
 
-        <p>Your donation has been received blah blah blah text.</p>
+        <p>Thank you so much for your contribution to The Generations Project. What we are doing is very important for our communities and we cannot do it without the continued support of people like you. We encourage you to spread our message! Thanks again!</p>
     </div>
 </div>
 
@@ -117,6 +124,9 @@
     var donateFormReady, submitDonateForm;
 
     (function($) {
+        $('.js-donate-to label:not(".js-donate-to-other")').on('click', function() {
+            $('.js-donate-to-other-input').val('');
+        });
         $('.js-donate-to-other').on('click', function() {
             setTimeout(function() {
                 $('.js-donate-to-other-input').focus();
@@ -126,6 +136,9 @@
             $('.js-donate-to-other input').attr('checked', true);
         });
 
+        $('.js-donation-amount label:not(".js-donation-amount-other")').on('click', function() {
+            $('.js-donation-amount-other-input').val('');
+        });
         $('.js-donation-amount-other').on('click', function() {
             setTimeout(function() {
                 $('.js-donation-amount-other-input').focus();
@@ -146,13 +159,18 @@
 
             var data = serializeAsObject($('#js-donate-form'));
 
-            if (! data.name) {
+            if (! data.full_name) {
                 alert('Please enter your name.');
                 return;
             }
             else if (! data.email) {
                 alert('Please enter your email address.');
                 return;
+            }
+            else if (! data.donation_amount || (data.donation_amount === 'other' && ! data.donation_amount_other)) {
+                alert('Please enter a donation amount!');
+                return;
+            }
 
             if (data.donation_amount === 'other') {
                 data.donation_amount = donation_amount_other;
