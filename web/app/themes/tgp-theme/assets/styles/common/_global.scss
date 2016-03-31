@@ -79,6 +79,8 @@ h1, h2, h3, h4, h5, h6 {
         &.has-event {
             .letter {
                 @include yellow-box();
+                position: relative;
+                z-index: 1;
                 border-radius: 50%;
                 color: #212121;
                 transition: box-shadow 250ms;
