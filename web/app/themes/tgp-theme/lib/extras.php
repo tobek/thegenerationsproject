@@ -159,7 +159,7 @@ function donation_submit_email($success, $fields, $result) {
   $body .= '<pre>' . print_r($result, true) . '</pre>';
 
   wp_mail(
-    'tobyfox@gmail.com',
+    DONATION_ADMIN_EMAIL,
     $subject,
     $body,
     ['Content-type: text/html']

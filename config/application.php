@@ -24,6 +24,7 @@ if (file_exists($root_dir . '/.env')) {
     'BRAINTREE_MERCHANT_ID',
     'BRAINTREE_PUBLIC_KEY',
     'BRAINTREE_PRIVATE_KEY',
+    'DONATION_ADMIN_EMAIL',
   ]);
 }
 
@@ -31,6 +32,7 @@ define('BRAINTREE_ENV', env('BRAINTREE_ENV'));
 define('BRAINTREE_MERCHANT_ID', env('BRAINTREE_MERCHANT_ID'));
 define('BRAINTREE_PUBLIC_KEY', env('BRAINTREE_PUBLIC_KEY'));
 define('BRAINTREE_PRIVATE_KEY', env('BRAINTREE_PRIVATE_KEY'));
+define('DONATION_ADMIN_EMAIL', env('DONATION_ADMIN_EMAIL'));
 
 /**
  * Set up our global environment constant and load its config first
