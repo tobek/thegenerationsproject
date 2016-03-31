@@ -140,12 +140,14 @@ function donation_submit_email($success, $fields, $result) {
   $body .= '<p>';
   foreach ($fields as $field => $field_info) {
     if (! $field_info['value']) continue;
-    
+
     $body .= "<b>$field_info[name]</b>: ";
     if ($field === 'donation_amount') $body .= '$';
     $body .= "$field_info[value]<br>";
   }
   $body .= '</p>';
+  
+  $body .= '<hr>';
 
   if ($success) {
     $body .= '<p>Here\'s all the info we got back from Braintree in case that\'s useful (but the important part is that the donation was successful, and you should be able to see it from your Braintree account):</p>';
@@ -162,4 +164,30 @@ function donation_submit_email($success, $fields, $result) {
     $body,
     ['Content-type: text/html']
   );
+
+
+  if ($success) {
+    $subject = 'Thank you for your donation!';
+
+    $body = '<p style="font-size: large">Thank you so much for your contribution to The Generations Project. What we are doing is very important for our communities and we cannot do it without the continued support of people like you. We encourage you to spread our message! Thanks again!</p>';
+
+    $body .= '<hr>';
+
+    $body .= '<p>';
+    $body .= 'Date: ' . date('F j, Y');
+    $body .= '<br>Donor: ' . $fields['full_name']['value'];
+    $body .= '<br>Donation Amount: $' . $fields['donation_amount']['value'];
+    $body .= '</p>';
+
+    $body .= '<p>The Generations Project is fiscally sponsored by Social and Environmental Entrepreneurs, a 501(c)3 nonprofit organization. All contributions $100 and over are tax deductible to the fullest extent allowed by law.</p>';
+
+    $body .= '<p>--</p><p style="font-size: small; color: #888">The Generations Project<br><a href="http://thegenerationsproject.info">thegenerationsproject.info</a><br>New York</p>';
+
+    wp_mail(
+      $fields['email']['value'],
+      $subject,
+      $body,
+      ['Content-type: text/html']
+    );
+  }
 }
