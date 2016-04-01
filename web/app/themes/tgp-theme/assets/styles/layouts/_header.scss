@@ -99,13 +99,12 @@
         background: none;
 
         &:hover, &.current-menu-item, &.current-menu-ancestor {
-            background: none;
-
             &:after {
                 display: none;
             }
 
             a {
+                background: none !important;
                 color: white;
                 text-shadow: 1px 0 1px rgba(155, 155, 155, 0.6);
             }
@@ -210,6 +209,18 @@
         &:hover {
             .sub-menu {
                 z-index: 1;
+            }
+        }
+    }
+
+    // When hovering anywhere on menu, hide the open sub menu unless you're specifically hovering over the open sub menu
+    &:hover {
+        .current-menu-item, .current-menu-ancestor {
+            .sub-menu {
+                left:  -9999px !important;
+            }
+            &:hover .sub-menu {
+                left: 0 !important;
             }
         }
     }
