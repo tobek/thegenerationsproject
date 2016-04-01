@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "580fcbb60af14483e6da3e5661da397c",
-    "content-hash": "2e5d1df4542c3043152a8667a31591d3",
+    "hash": "6e008ed18c8ab07156bbbb948238ba71",
+    "content-hash": "94a6f89fafdb40f02ed7cf5c88740537",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -332,15 +332,15 @@
         },
         {
             "name": "wpackagist-plugin/akismet",
-            "version": "3.1.9",
+            "version": "3.1.10",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/akismet/",
-                "reference": "tags/3.1.9"
+                "reference": "tags/3.1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/akismet.3.1.9.zip",
+                "url": "https://downloads.wordpress.org/plugin/akismet.3.1.10.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -349,6 +349,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/akismet/"
+        },
+        {
+            "name": "wpackagist-plugin/better-wp-security",
+            "version": "5.3.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/better-wp-security/",
+                "reference": "tags/5.3.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/better-wp-security.5.3.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/better-wp-security/"
         },
         {
             "name": "wpackagist-plugin/contact-form-7",
@@ -469,6 +489,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/rich-text-excerpts/"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-seo",
+            "version": "3.1.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "tags/3.1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.1.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wordpress-seo/"
         },
         {
             "name": "wpackagist-plugin/wp-ses",
