@@ -146,7 +146,7 @@ function donation_submit_email($success, $fields, $result) {
     $body .= "$field_info[value]<br>";
   }
   $body .= '</p>';
-  
+
   $body .= '<hr>';
 
   if ($success) {
@@ -181,7 +181,7 @@ function donation_submit_email($success, $fields, $result) {
 
     $body .= '<p>The Generations Project is fiscally sponsored by Social and Environmental Entrepreneurs, a 501(c)3 nonprofit organization. All contributions $100 and over are tax deductible to the fullest extent allowed by law.</p>';
 
-    $body .= '<p>--</p><p style="font-size: small; color: #888">The Generations Project<br><a href="http://thegenerationsproject.info">thegenerationsproject.info</a><br>New York</p>';
+    $body .= '<p>--</p><p style="font-size: small; color: #888">The Generations Project<br><a href="http://thegenerationsproject.info">thegenerationsproject.info</a><br>#33, 374 South 5th Street<br>Brooklyn, NY 11211</p>';
 
     wp_mail(
       $fields['email']['value'],
