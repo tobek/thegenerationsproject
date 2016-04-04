@@ -36,19 +36,23 @@
         .cycle-slideshow {
             overflow: hidden;
         }
-        img.cycle-slide {
+        img.cycle-slide, img.cycle-slide-active {
             top: 0 !important;
             bottom: auto !important;
             width: 100% !important;
-            height: auto !important;
+            height: 100% !important;
             max-width: none !important;
             max-height: none !important;
             margin: 0 auto !important;
 
-            .object-fit & {
-                max-height: 100% !important;
-                object-fit: cover;
-            }
+            background-size: cover;
+            background-position: center;
+
+            // No longer necessary now that we're using background images
+            // .object-fit & {
+            //     max-height: 100% !important;
+            //     object-fit: cover !important;
+            // }
         }
     }
 

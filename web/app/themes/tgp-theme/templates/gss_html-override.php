@@ -25,7 +25,7 @@ function gss_html_output($ids,$name,$style,$options,$carousel) {
         if (! $post_title) $caption_classes .= 'no-caption-title ';
         if (! $excerpt) $caption_classes .= 'no-caption-body';
         // @TOBY changed following line
-		$slides .= "\n\t\t\t<img src=\"$src[0]\" alt=\"$excerpt\" data-post-title=\"$post_title\"  data-link-to=\"$link_to\" data-caption-classes=\"$caption_classes\"/>\n";
+        $slides .= "\n\t\t\t<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" style=\"background-image:url('$src[0]')\" alt=\"$excerpt\" data-post-title=\"$post_title\"  data-link-to=\"$link_to\" data-caption-classes=\"$caption_classes\"/>\n";
         if( !empty($carousel) ){
             $carousel_slides .= "\t\t\t<div><img src=\"$src[0]\" title=\"$excerpt\" /></div>\n";
         }
