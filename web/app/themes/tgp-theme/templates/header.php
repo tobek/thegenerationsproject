@@ -30,7 +30,7 @@
                 <?php } ?>
                 -->
                 Menu
-                &#x25bc;
+                <span class="menu-triangle">&blacktriangledown;</span>
             </div>
         </nav>
     </div>
