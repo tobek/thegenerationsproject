@@ -178,6 +178,5 @@
 })(jQuery); // Fully reference jQuery after this point.
 
 function isTouchDevice() {
-  return 'ontouchstart' in window        // works on most browsers 
-      || navigator.maxTouchPoints;       // works on IE10/11 and Surface
-};
+  return 'ontouchstart' in window || navigator.maxTouchPoints;
+}
