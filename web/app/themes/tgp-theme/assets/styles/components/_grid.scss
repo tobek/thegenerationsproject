@@ -128,30 +128,32 @@
 
 // end Bootstrap Mid-Small grid columns
 
-.col-center {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-@media (max-width: $screen-xs-min) {
-  .col-xs-center {
+.container .row { // specificity =(
+  .col-center {
     float: none;
     margin-left: auto;
     margin-right: auto;
   }
-}
-@media (max-width: $screen-xs-max) {
-  .col-ms-center {
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
+  @media (max-width: $screen-xs-min) {
+    .col-xs-center {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
-}
-@media (max-width: $screen-sm-max) {
-  .col-sm-center {
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
+  @media (max-width: $screen-xs-max) {
+    .col-ms-center {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  @media (max-width: $screen-sm-max) {
+    .col-sm-center {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
 

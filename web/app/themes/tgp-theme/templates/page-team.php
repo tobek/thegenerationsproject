@@ -25,7 +25,7 @@
 
     <div class="row row-eq-height">
         <?php while ($team_query->have_posts()) : $team_query->the_post(); ?>
-            <div class="col-xs-center col-sm-4 col-ms-6 col-xs-10">
+            <div class="col-xs-center col-sm-4 col-ms-6 col-xs-11">
                 <div class="card">
                     <div class="image-wrapper">
                         <?= get_the_post_thumbnail(null, 'medium', ['alt' => get_the_title()]) ?>
@@ -45,7 +45,7 @@
 
         <div class="row row-eq-height">
             <?php while ($board_query->have_posts()) : $board_query->the_post(); ?>
-                <div class="col-xs-center col-sm-3 col-ms-6 col-xs-8">
+                <div class="col-xs-center col-sm-3 col-ms-6 col-xs-10">
                     <div class="card">
                         <h3><?php the_title() ?></h3>
                         <div class="text"><?php the_content() ?></div>
@@ -61,7 +61,7 @@
 
             <div class="row row-eq-height">
                 <?php while ($advocates_query->have_posts()) : $advocates_query->the_post(); ?>
-                    <div class="col-xs-center col-sm-3 col-ms-6 col-xs-8">
+                    <div class="col-xs-center col-sm-3 col-ms-6 col-xs-10">
                         <div class="card">
                             <div class="image-wrapper">
                                 <?= get_the_post_thumbnail(null, 'medium', ['alt' => get_the_title()]) ?>
