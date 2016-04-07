@@ -94,6 +94,7 @@
     'events_timeline': {
       init: function() {
         var $container = $('.js-events-container');
+        var $timeline = $('.js-timeline');
         var height = $container.height();
         $container.css({
           'height': height,
@@ -102,14 +103,25 @@
 
         function scrollToEvent(event) {
           event.preventDefault();
-          var yearMonth = $(this).data('yearMonth');
+          var $this = $(this);
+
+          var yearMonth = $this.data('yearMonth');
           var $eventTimestamps = $('.js-events-container [data-year-month="' + yearMonth + '"]');
           var $events = $eventTimestamps.parents('.js-post');
           var $event = $eventTimestamps.first().parents('.js-post');
 
           var currentScroll = $container.scrollTop();
           var eventOffset = $event.position().top;
-          $container.animate({ scrollTop: currentScroll + eventOffset }, 250);
+
+          $container.off('scroll', svgConnect.reset);
+          $container.animate({ scrollTop: currentScroll + eventOffset }, 250, function() {
+            svgConnect.connect($this.find('.letter'), $event.find('header'));
+
+            setTimeout(function() {
+              $container.one('scroll', svgConnect.reset);
+              $timeline.one('scroll', svgConnect.reset);
+            }, 100);
+          });
 
           $container.addClass('is-scrolled');
           $events.addClass('is-active');
@@ -129,7 +141,7 @@
           $('.js-timeline-node').on('click', function() {
             // Wait a moment so that the scrolLToEvent scroll doesn't fire this
             setTimeout(function() {
-              $($container).one('scroll', leaveEvent);
+              $container.one('scroll', leaveEvent);
             }, 300);
           });
         }

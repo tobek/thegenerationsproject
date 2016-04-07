@@ -38,7 +38,7 @@
         $oldest_timestamp = strtotime(array_keys($months_with_events)[0]);
 
         ?>
-    <div class="timeline">
+    <div class="timeline js-timeline">
         <?php for ($i=-1; $i < 23; $i++) {
             $timestamp = Utils\add_months($oldest_timestamp, $i);
             $year_month = date('Y-m', $timestamp);
@@ -78,5 +78,15 @@
 
         } ?>
     </div>
+
+    <div id="timeline-svg-container">
+        <svg id="timeline-svg" width="0" height="0" >
+           <path
+                id="timeline-path"
+                d="M0 0"             
+                stroke-width="0.3em" />
+        </svg>
+    </div>
+
     <?php } ?>
 </div>

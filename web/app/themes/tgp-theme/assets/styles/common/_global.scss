@@ -128,6 +128,25 @@ img {
     }
 }
 
+#timeline-svg-container {
+    z-index: -1;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    #timeline-path {
+        transition: stroke 250ms;
+        stroke: transparent;
+        fill: none;
+    }
+    &.is-active #timeline-path {
+        stroke: $yellow-box-solid;
+    }
+}
+
 .double-circles-outer,
 .double-circles-inner {
     @include yellow-box();
