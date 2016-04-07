@@ -1,11 +1,16 @@
 body {
     font: 16px/20px $font-stack-serif;
     background: #EEE url('../images/bg-main.jpg') center repeat;
+    overflow-x: hidden;
 }
 .content {
     position: relative;
     padding-bottom: 75px;
     overflow: hidden;
+
+    @media (max-width: 600px) {
+        padding-bottom: 25px;
+    }
 }
 .page-header {
     margin: 70px auto 5px;

@@ -80,6 +80,12 @@
             }
         }
     }
+
+    @media (max-width: 400px) {
+        .container {
+            padding-right: 0;
+        }
+    }
 }
 
 .nav-primary {
@@ -270,7 +276,7 @@
             padding: 150px 0 30px;
             background-color: #303030;
 
-            transform: translateX(-100%);
+            transform: translateX(-105%);
             -webkit-transition: -webkit-transform 250ms;
             transition: transform 250ms;
             &.is-visible {
