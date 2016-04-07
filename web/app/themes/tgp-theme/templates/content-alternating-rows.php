@@ -10,11 +10,6 @@
 ?>
 
 <article class="alternating-rows tgp-post js-post">
-    <a class="image" <?php if ($link_posts) { ?>href="<?= get_the_permalink() ?>"<?php } ?>>
-        <?= get_the_post_thumbnail(null, 'thumbnail') ?>
-    </a>
-
-
     <header>
         <a class="title" <?php if ($link_posts) { ?>href="<?= get_the_permalink() ?>"<?php } ?>>
             <h3><?= get_the_title() ?></h3>
@@ -23,6 +18,10 @@
             <?php get_template_part('templates/entry-meta'); ?>
         <?php } ?>
     </header>
+
+    <a class="image" <?php if ($link_posts) { ?>href="<?= get_the_permalink() ?>"<?php } ?>>
+        <?= get_the_post_thumbnail(null, 'thumbnail') ?>
+    </a>
 
     <?php if ($show_full_content) { ?>
         <div class="body full-content">
