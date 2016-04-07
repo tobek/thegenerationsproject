@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <?php if ($gallery_shortcode) { ?>
-                    <div class="col-xs-12 col-sm-9 col-md-5 post-content-wrapper">
+                    <div class="col-xs-12 col-sm-9 col-md-5 col-sm-center post-content-wrapper">
                         <div class="post-content">
                             <div class="post-content-inner">
                                 <?= $content ?>
@@ -29,7 +29,7 @@
                         <?= do_shortcode(str_replace('gallery', 'gss', $gallery_shortcode)) ?>
                     </div>
                 <?php } else if ($feat_img_url) { ?>
-                    <div class="col-xs-12 col-ms-9 col-sm-6 post-content-wrapper">
+                    <div class="col-xs-12 col-ms-9 col-sm-6 col-ms-center post-content-wrapper">
                         <div class="post-content">
                             <div class="post-content-inner">
                                 <?= $content ?>
@@ -37,11 +37,11 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-ms-9 col-sm-6">
+                    <div class="col-xs-12 col-ms-9 col-sm-6 col-ms-center">
                         <img class="post-single-image" src="<?= $feat_img_url ?>">
                     </div>
                 <?php } else { ?>
-                    <div class="col-sm-9 col-lg-7 post-content-wrapper">
+                    <div class="col-sm-9 col-lg-7 col-center post-content-wrapper">
                         <div class="post-content">
                             <div class="post-content-inner">
                                 <?= $content ?>
