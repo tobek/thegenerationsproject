@@ -59,6 +59,10 @@ function tgp_rewrite() {
       exit;
     }
   }
+  else if (strpos($path, '/login') === 0) {
+    wp_redirect('/wp/wp-admin/');
+    exit;
+  }
 }
 
 function braintree_init() {
