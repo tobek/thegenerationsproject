@@ -237,6 +237,7 @@
             @include yellow-box();
             @include font-nav();
             float: right;
+            white-space: nowrap;
             font-size: 20px;
             padding: 10px 14px 8px;
 

@@ -25,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="col-ms-12 col-sm-12 col-md-7">
+                    <div class="col-xs-12 col-ms-12 col-sm-12 col-md-7">
                         <?= do_shortcode(str_replace('gallery', 'gss', $gallery_shortcode)) ?>
                     </div>
                 <?php } else if ($feat_img_url) { ?>
