@@ -9,6 +9,10 @@
         $gallery_shortcode = null;
         $content = Utils\extract_gallery_shortcode(get_the_content(), $gallery_shortcode);
         $content = apply_filters('the_content', $content);
+
+        if (strpos($content, 'vimeo.com') === false || stropos($content, '<img ') === false) {
+            $feat_img_url = null;
+        }
     ?>
 
     <article <?php post_class(); ?>>
