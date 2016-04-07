@@ -93,8 +93,10 @@
     // Events Timeline page, note the change from events-timeline to events_timeline.
     'events_timeline': {
       init: function() {
+        var connectTimeout;
         var $container = $('.js-events-container');
         var $timeline = $('.js-timeline');
+
         var height = $container.height();
         $container.css({
           'height': height,
@@ -113,15 +115,16 @@
           var currentScroll = $container.scrollTop();
           var eventOffset = $event.position().top;
 
-          $container.off('scroll', svgConnect.reset);
           $container.animate({ scrollTop: currentScroll + eventOffset }, 250, function() {
             svgConnect.connect($this.find('.letter'), $event.find('header'));
-
-            setTimeout(function() {
-              $container.one('scroll', svgConnect.reset);
-              $timeline.one('scroll', svgConnect.reset);
-            }, 100);
           });
+
+          $container.off('scroll', svgConnect.reset);
+          clearTimeout(connectTimeout);
+          connectTimeout = setTimeout(function() {
+            $container.one('scroll', svgConnect.reset);
+            $timeline.one('scroll', svgConnect.reset);
+          }, 500);
 
           $container.addClass('is-scrolled');
           $events.addClass('is-active');
