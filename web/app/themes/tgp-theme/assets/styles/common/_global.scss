@@ -15,6 +15,10 @@ body {
 .page-header {
     margin: 70px auto 5px;
     border: 0;
+
+    @media (max-width: 600px) {
+        margin-top: 60px;
+    }
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: $font-stack-sans;
@@ -32,6 +36,12 @@ iframe {
     text-align: center;
     font-family: $font-stack-sans;
     font-weight: 500;
+
+    @media (max-width: 600px) {
+        overflow-x: scroll;
+        margin-bottom: 5px;
+        padding-bottom: 5px; // Space to make absolutely positioned year visible
+    }
 
     .month {
         @include gray-box();
@@ -107,7 +117,7 @@ iframe {
 
     .year {
         position: absolute;
-        bottom: -12px;
+        top: 26px;
         margin-left: -4px;
         font-size: 9.6px;
         color: #4a4a4a;

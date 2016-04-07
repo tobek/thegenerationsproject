@@ -100,12 +100,7 @@
           'overflow-y': 'scroll'
         });
 
-        // Add margin to events so it's scrollable within container
-        var lastEventHeight = $('.js-events-container .js-post:last-child').height();
-        $('.js-events').css('margin-bottom', height - lastEventHeight - 30);
-
-
-        $('.js-timeline-node').on('mouseenter', function(event) {
+        function scrollToEvent(event) {
           event.preventDefault();
           var yearMonth = $(this).data('yearMonth');
           var $eventTimestamps = $('.js-events-container [data-year-month="' + yearMonth + '"]');
@@ -118,12 +113,31 @@
 
           $container.addClass('is-scrolled');
           $events.addClass('is-active');
-        });
+        }
 
-        $('.js-timeline-node').on('mouseleave', function(event) {
-          $container.removeClass('is-scrolled');
-          $container.find('.js-post').removeClass('is-active');
-        });
+        function leaveEvent(event) {
+            $container.removeClass('is-scrolled');
+            $container.find('.js-post').removeClass('is-active');
+        }
+
+        // Add margin to events so it's scrollable within container
+        var lastEventHeight = $('.js-events-container .js-post:last-child').height();
+        $('.js-events').css('margin-bottom', height - lastEventHeight - 30);
+
+        if (isTouchDevice()) {
+          $('.js-timeline-node').on('click', scrollToEvent);
+          $('.js-timeline-node').on('click', function() {
+            // Wait a moment so that the scrolLToEvent scroll doesn't fire this
+            setTimeout(function() {
+              $($container).one('scroll', leaveEvent);
+            }, 300);
+          });
+        }
+        else {
+          $('.js-timeline-node').on('mouseenter', scrollToEvent);
+
+          $('.js-timeline-node').on('mouseleave', leaveEvent);
+        }
       }
     }
   };
@@ -162,3 +176,8 @@
   $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
+
+function isTouchDevice() {
+  return 'ontouchstart' in window        // works on most browsers 
+      || navigator.maxTouchPoints;       // works on IE10/11 and Surface
+};
