@@ -127,3 +127,27 @@ img {
         color: #4a4a4a;
     }
 }
+
+.double-circles-outer,
+.double-circles-inner {
+    @include yellow-box();
+    display: inline-block;
+    border-radius: 50%;
+}
+.double-circles-outer {
+    z-index: -1;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+
+    .page-header h1 & {
+        margin: -8px 0 0 -20px;
+    }
+}
+    .double-circles-inner {
+        position: relative;
+        width: 46px;
+        height: 46px;
+        left: 7px;
+        top: 7px;
+    }

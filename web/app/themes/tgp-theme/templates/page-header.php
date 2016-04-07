@@ -16,7 +16,12 @@
 ?>
 
 <div class="page-header container">
-    <h1><?= Titles\title(); ?></h1>
+    <h1>
+        <?php if ($is_event) { ?>
+            <span class="double-circles-outer"><span class="double-circles-inner"></span></span>
+        <?php } ?>
+        <?= Titles\title(); ?>
+    </h1>
     
     <?php if (is_single()) { ?>
         <?php get_template_part('templates/entry-meta'); ?>
