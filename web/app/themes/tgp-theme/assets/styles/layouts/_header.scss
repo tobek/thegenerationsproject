@@ -264,6 +264,9 @@
                 transform: translateX(0);
             }
         
+            #menu-main-menu {
+                white-space: normal;
+            }
             #menu-main-menu > .menu-item {
                 position: relative;
                 display: block;
