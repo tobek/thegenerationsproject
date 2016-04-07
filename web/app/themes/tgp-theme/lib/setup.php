@@ -93,6 +93,11 @@ function display_sidebar() {
   // return apply_filters('sage/display_sidebar', $display);
 }
 
+// Hide this annoying thing
+if (WP_ENV === 'production') {
+  add_filter('show_admin_bar', '__return_false');
+}
+
 /**
  * Theme assets
  */
