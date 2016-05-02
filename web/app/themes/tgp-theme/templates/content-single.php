@@ -10,7 +10,7 @@
         $content = Utils\extract_gallery_shortcode(get_the_content(), $gallery_shortcode);
         $content = apply_filters('the_content', $content);
 
-        if (strpos($content, 'vimeo.com') === false || stropos($content, '<img ') === false) {
+        if (strpos($content, 'vimeo.com') === false || strpos($content, '<img ') === false) {
             $feat_img_url = null;
         }
     ?>
