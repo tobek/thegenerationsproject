@@ -22,6 +22,7 @@ function get_feat_img($size) {
 
 function get_months_with_events() {
     $events = get_posts([
+        'posts_per_page' => 100,
         'post_status' => 'publish',
         'post_type' => 'post',
         'meta_key' => 'event_date',
