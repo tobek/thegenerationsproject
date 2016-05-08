@@ -74,7 +74,7 @@
                 $classes .= ' year-end';
             }
 
-            ?><a class="month <?= $classes ?>" data-year-month="<?= $year_month ?>" <?= $link ? "href=\"$link\"" : '' ?>><span class="letter"><?= $month[0] ?></span></a><?php
+            ?><a class="month <?= $classes ?>" data-year-month="<?= $year_month ?>" <?= $link ? "href=\"$link\"" : '' ?>><span class="letter"><?= $month ?></span></a><?php
 
         } ?>
     </div>
