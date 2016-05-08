@@ -95,7 +95,10 @@
         </div>
 
         <div class="form-section">
-            <span class="form-instructions">Donate with PayPal or enter your credit card information below:</span>
+            <span class="form-instructions">
+                <?php // Donate with PayPal or enter your credit card information below: ?>
+                Please enter your credit card information below:
+            </span>
             <div id="braintree-form"></div>
         </div>
 
