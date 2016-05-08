@@ -8,6 +8,8 @@ use Roots\Sage\Setup;
  * Add <body> classes
  */
 function body_class($classes) {
+  global $post;
+  
   // Add page slug if it doesn't exist
   if (is_single() || is_page() && !is_front_page()) {
     if (!in_array(basename(get_permalink()), $classes)) {
@@ -15,8 +17,8 @@ function body_class($classes) {
     }
   }
 
-  if (is_page() && get_post_thumbnail_id()) {
-    $classes[] = 'has-feat-img';
+  if (is_page() && get_post_thumbnail_id() && get_post_meta($post->ID, 'feat_img_as_bg', true)) {
+    $classes[] = 'has-feat-img-bg';
   }
 
   // Add class if sidebar is active

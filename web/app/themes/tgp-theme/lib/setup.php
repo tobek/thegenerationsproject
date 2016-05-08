@@ -238,12 +238,58 @@ function create_partners() {
 }
 
 
+add_action('admin_init', __NAMESPACE__ . '\\tgp_page_feat_img_display' );
+function tgp_page_feat_img_display() {
+    add_meta_box('tgp_feat_img_bg_display', 'Featured Image Display', __NAMESPACE__ . '\\tgp_feat_img_bg_display', 'page', 'side');
+}
+
+function tgp_feat_img_bg_display() {
+  global $post;
+  $feat_img_as_bg = get_post_meta($post->ID, 'feat_img_as_bg', true);
+  $feat_img_side_by_side = get_post_meta($post->ID, 'feat_img_side_by_side', true);
+
+  // Uh no idea why but sublime text syntax highlighting is freaking after exiting PHP mode if I remove or comment out this useless conditional - @toby
+  if (true) {}
+   
+  ?>
+    <div>
+      <input type="hidden" name="tgp-feat-img-display-nonce" id="tgp-feat-img-display-nonce" value="<?= wp_create_nonce('tgp-feat-img-display-nonce') ?>" />
+      <label>
+        <input type="checkbox" name="feat_img_as_bg" <?= $feat_img_as_bg ? 'checked="checked"' : '' ?>>
+        Use Featured Image as background
+      </label>
+      <br>
+      <label>
+        <input type="checkbox" name="feat_img_side_by_side" <?= $feat_img_side_by_side ? 'checked="checked"' : '' ?>>
+        Show Featured Image side-by-side with content
+      </label>
+    </div>
+  <?php
+}
+
+add_action ('save_post', __NAMESPACE__ . '\\save_tgp_page_feat_img_display');
+function save_tgp_page_feat_img_display() {
+  global $post;
+   
+  if (! wp_verify_nonce($_POST['tgp-feat-img-display-nonce'], 'tgp-feat-img-display-nonce')) {
+    return $post->ID;
+  }
+   
+  if (! current_user_can('edit_post', $post->ID)) {
+    return $post->ID;
+  }
+   
+  update_post_meta($post->ID, 'feat_img_as_bg', $_POST['feat_img_as_bg']);
+  update_post_meta($post->ID, 'feat_img_side_by_side', $_POST['feat_img_side_by_side']);
+}
+
+
 add_action('admin_init', __NAMESPACE__ . '\\tgp_post_event_date' );
 function tgp_post_event_date() {
     add_meta_box('tgp_event_date_meta', 'Event Date', __NAMESPACE__ . '\\tgp_event_date_meta', 'post', 'side');
 }
  
-function tgp_event_date_meta () {
+function tgp_event_date_meta() {
   global $post;
   $date = get_post_meta($post->ID, 'event_date', true);
    
@@ -349,11 +395,12 @@ function admin_css() { ?>
   </style>
 <?php }
 
-// Ensure that except and custom fields meta boxes always visible
+// Ensure that excerpt and custom fields meta boxes always visible
+// NOTE: Could have sworn this was working, but when I made a new admin account for Linus it failed to work - had to unhide them manually. It may have been the addition of the `is_array` checks that broke it, but *not* having them broke on new user who didn't have that usermeta at all (or had it as a string?). - @toby
 add_action('admin_init', __NAMESPACE__ . '\\unhide_meta_boxes');
 function unhide_meta_boxes() {
   $dirty = false;
-  
+
   $page_hidden = get_usermeta(get_current_user_id(), 'metaboxhidden_page');
 
   if (is_array($page_hidden)) {
