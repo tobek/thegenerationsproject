@@ -1,6 +1,10 @@
 <?php
 
-// @NOTE - this file is unused here in tgp-theme. This is for hackily overriding the plugin file `web/app/plugins/gallery-slideshow/gss_html.php`. Only putting it here for the purposes of source control (and also, in any build automation, this could be automatically copied into the appropriate place). Of course, this is not a very elegant method and could break with any updates to that plugin, but it's necessary at the moment.
+/**
+ * @NOTE - this file is unused here in tgp-theme. This is for hackily overriding the plugin file `web/app/plugins/gallery-slideshow/gss_html.php`. Only putting it here for the purposes of source control (and also, in any build automation, this could be automatically copied into the appropriate place). Of course, this is not a very elegant method and could break with any updates to that plugin, but it's necessary at the moment.
+ *
+ *     cp tgp-theme/templates/gss_html-override.php web/app/plugins/gallery-slideshow/gss_html.php
+ */
 
 function gss_html_output($ids,$name,$style,$options,$carousel) {
     $ids = explode( ',', $ids );
