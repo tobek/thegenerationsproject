@@ -39,7 +39,7 @@
 
         ?>
     <div class="timeline js-timeline">
-        <?php for ($i=-1; $i < 23; $i++) {
+        <?php for ($i=0; $i < 25; $i++) {
             $timestamp = Utils\add_months($oldest_timestamp, $i);
             $year_month = date('Y-m', $timestamp);
             $month = date('M', $timestamp);
