@@ -35,7 +35,8 @@
         }
 
         // PHP associative arrays are ordered so this works:
-        $oldest_timestamp = strtotime(array_keys($months_with_events)[0]);
+        // (we're getting the 2nd event cause the first is too old to all fit together on the timeline)
+        $oldest_timestamp = strtotime(array_keys($months_with_events)[1]);
 
         ?>
     <div class="timeline js-timeline">
