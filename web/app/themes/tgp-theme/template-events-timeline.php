@@ -16,7 +16,7 @@
 
 <div class="events-container js-events-container">
     <div class="container events js-events">
-        <?php foreach ($events as $event) {
+        <?php foreach (array_reverse($events) as $event) {
             $post = $event;
             $pages = [$event->post_content];
             get_template_part('templates/content', 'alternating-rows');
