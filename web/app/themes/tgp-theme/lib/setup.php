@@ -401,7 +401,7 @@ add_action('admin_init', __NAMESPACE__ . '\\unhide_meta_boxes');
 function unhide_meta_boxes() {
   $dirty = false;
 
-  $page_hidden = get_usermeta(get_current_user_id(), 'metaboxhidden_page');
+  $page_hidden = get_user_meta(get_current_user_id(), 'metaboxhidden_page');
 
   if (is_array($page_hidden)) {
     $index = array_search('postexcerpt', $page_hidden);
@@ -423,7 +423,7 @@ function unhide_meta_boxes() {
   }
 
   // For posts we just care about the excerpt field
-  $post_hidden = get_usermeta(get_current_user_id(), 'metaboxhidden_post');
+  $post_hidden = get_user_meta(get_current_user_id(), 'metaboxhidden_post');
 
   if (is_array($post_hidden)) {
     $index = array_search('postexcerpt', $post_hidden);
