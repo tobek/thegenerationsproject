@@ -347,6 +347,21 @@ function save_tgp_post_event_date() {
   }
 }
 
+add_filter( 'manage_posts_columns', __NAMESPACE__ . '\\tgp_event_date_posts_table_head' );
+function tgp_event_date_posts_table_head($columns) {
+  $columns['event_date'] = 'Event Date';
+  return $columns;
+}
+add_action( 'manage_posts_custom_column', __NAMESPACE__ . '\\tgp_event_date_posts_table_content', 10, 2 );
+function tgp_event_date_posts_table_content($column_name, $post_id) {
+  if ($column_name == 'event_date') {
+    $date = get_post_meta($post_id, 'event_date', true);
+    if ($date) {
+      echo date('M d, Y', $date);
+    }
+  }
+}
+
 add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\include_datetimepicker');
 function include_datetimepicker($hook) {
   if ($hook !== 'post.php' && $hook !== 'post-new.php') {
