@@ -14,7 +14,18 @@
 
     $feat_posts_query = new WP_Query([
         'post_type' => 'post',
-        'posts_per_page' => 20,
+        'posts_per_page' => 3,
+        'orderby' => 'meta_value_num',
+        'meta_key' => 'event_date',
+        'order' => 'ASC',
+        'meta_query' => [
+            [
+                // Filter to only posts with event date later than today
+                'key' => 'event_date',
+                'value' => time(),
+                'compare' => '>='
+            ]
+        ],
     ]);
 
     while (have_posts()) : the_post();
@@ -44,20 +55,13 @@
 
         <div class="col-sm-6 col-ms-6">
             <div class="news-widget">
-                <h3>News</h3>
+                <h3>Upcoming Events</h3>
                 <ul class="posts">
                     <?php
-                    $feat_posts_count = 0;
                     while ($feat_posts_query->have_posts()) {
                         $feat_posts_query->the_post();
 
                         $event_date = get_post_meta($post->ID, 'event_date', true);
-                        if ($event_date && $event_date < time()) {
-                            // Event with date in the past, exclude from this widget
-                            continue;
-                        }
-
-                        if (++$feat_posts_count > 3) break;
 
                         $date = $event_date ? $event_date : get_post_time();
                     ?>
