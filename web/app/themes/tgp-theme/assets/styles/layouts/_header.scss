@@ -16,23 +16,6 @@
             width: 160px;
             height: auto;
         }
-
-        // Silly way to do this but want to chuck this in there real easy
-        &:after {
-            content: "Building Bridges";
-            position: absolute;
-            width: 100%;
-            left: 0;
-            margin-top: 15px;
-            padding: 5px 2px 3px;
-
-            font-size: 16px;
-            text-transform: uppercase;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            text-shadow: none;
-            color: #aaa;
-        }
     }
 
     .timeline {
